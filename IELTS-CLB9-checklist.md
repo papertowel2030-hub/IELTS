@@ -1,183 +1,158 @@
-# IELTS CLB 9 / 10 — 8-Week Self-Prep Checklist
+# IELTS CLB 9 / 10 — 8-Week Interleaved Checklist
 
-**Test type:** General Training
-**Target scores:** Listening 8.0 · Reading 8.0 · Writing 7.0 · Speaking 7.5
-**Time budget:** 15 min/day weekdays · 2–3 hrs Sat + 2–3 hrs Sun
-**Total:** ~50 hours over 8 weeks
+**Test type:** General Training (Academic notes flagged ⚙)
+**Target scores:** Listening 8.0 · Reading 8.0 · Writing 7.0+ · Speaking 7.5
+**Time budget:** 45 min/day weekday · 3 hrs Sat + 2 hrs Sun
+**Total:** ~50 hrs over 8 weeks
 
-> Note: R:8.0 + S:7.5 are CLB 10 level (CLB 9 only needs R:6.5, S:7.0). Aim high anyway — gives safety margin.
+> CLB 9 minimum is L 8.0 · R 6.5 · W 6.5 · S 7.0. These targets aim CLB 10 for safety margin.
 
----
+## Core principles (read once, follow every week)
 
-## 8-Week Plan
-
-### Week 1 — Diagnostic
-
-**Weekday (15 min/day):**
-- [ ] Mon — Watch 1 Listening explainer video
-- [ ] Tue — Watch 1 Reading explainer video
-- [ ] Wed — Watch 1 Writing explainer video
-- [ ] Thu — Watch 1 Speaking explainer video
-- [ ] Fri — Watch 1 IELTS format overview video
-
-**Saturday (2–3 hrs):**
-- [ ] Take 1 full practice test — all 4 sections, strictly timed
-
-**Sunday (2–3 hrs):**
-- [ ] Score every section
-- [ ] Map gap vs target per skill
-- [ ] Write personal error list
-
-**Milestone:** Know baseline score.
+1. **Interleave**, don't block. Touch every skill weekly — preferably daily.
+2. **Retrieval > re-reading.** Always answer first, check answer second.
+3. **Error log every wrong answer**, categorised. (See `error-log.html`.)
+4. **5 Anki cards/day max.** Quality over volume.
+5. **Get external feedback** on Writing & Speaking fortnightly. (See `feedback.html`.)
+6. **Re-diagnose** at end of Week 4. Reallocate hours.
 
 ---
 
-### Week 2 — Listening
+## Daily rotation (interleaved — same pattern every week)
 
-**Weekday (15 min/day):**
-- [ ] Mon — 1 Section 1–2 clip + check answers + note wrong patterns
-- [ ] Tue — 1 Section 1–2 clip + check answers
-- [ ] Wed — 1 Section 1–2 clip + check answers
-- [ ] Thu — 1 Section 1–2 clip + check answers
-- [ ] Fri — 1 Section 1–2 clip + review week's mistakes
-
-**Saturday (2–3 hrs):**
-- [ ] Listening Sections 1–4 timed drill × 2 sets
-- [ ] Full answer review
-
-**Sunday (2–3 hrs):**
-- [ ] Study note-taking technique
-- [ ] Drill MCQ, map labelling, form completion question types
-
-**Milestone:** 35+/40 on Sections 1–2.
+| Day | Main skill (45 min) | Micro-drill (15 min, opposite skill) | SRS (5 min) |
+|-----|---------------------|--------------------------------------|-------------|
+| Mon | Listening section + error log | Writing — 1 paragraph by hand | Anki |
+| Tue | Reading passage timed + error log | Speaking — 1 cue card recorded | Anki |
+| Wed | Writing — full task or 2 body paras | Listening — 5-min shadowing | Anki |
+| Thu | Speaking — record P1+P3 drill | Reading — 1 paraphrase set | Anki |
+| Fri | Error-log review + re-attempt worst items | New collocations to Anki | Anki |
+| Sat | Full mock — 1 skill per week (rotating) | — | — |
+| Sun | Reflection + plan next week + feedback round | — | — |
 
 ---
 
-### Week 3 — Listening Deep + Reading Intro
+## Week 1 — Diagnostic & descriptor study
 
-**Weekday (15 min/day):**
-- [ ] Mon — Section 3–4 clip
-- [ ] Tue — 1 reading passage (untimed)
-- [ ] Wed — Section 3–4 clip
-- [ ] Thu — 1 reading passage (untimed)
-- [ ] Fri — Section 3–4 clip
+- [ ] Mon — Read `band-descriptors.html` end to end. Highlight Band 7 criteria.
+- [ ] Tue — Full Listening section (Cam 17, T1) + log errors.
+- [ ] Wed — Full Reading section (Cam 17, T1, P1+P2) + log errors.
+- [ ] Thu — Write Task 1 letter (20 min, by hand).
+- [ ] Fri — Record P1+P2 from Cam 17. Listen back.
+- [ ] **Sat (3 hr)** — Full mock test: L + R + W (timed back-to-back).
+- [ ] **Sun (2 hr)** — Score everything. Self-rate W against descriptors. Send 1 essay + 1 speaking mock to examiner (Option A in `feedback.html`). Calculate hour-weights from `diagnostic.html`.
 
-**Saturday (2–3 hrs):**
-- [ ] Full listening test
-- [ ] Gap analysis per question type
-
-**Sunday (2–3 hrs):**
-- [ ] Skimming + scanning technique drill (no timed test yet)
-
-**Milestone:** L: 36+/40 · R: technique understood.
+**Milestone:** Baseline known. Hour-weighting decided.
 
 ---
 
-### Week 4 — Reading
+## Week 2 — Build technique, all skills
 
-**Weekday (15 min/day):**
-- [ ] Mon — 1 timed passage (10 min, 13–14 Qs) + review
-- [ ] Tue — 1 timed passage + review
-- [ ] Wed — 1 timed passage + review
-- [ ] Thu — 1 timed passage + review
-- [ ] Fri — 1 timed passage + week review
+- [ ] Mon — L Section 1+2, timed; identify top 2 error categories from week 1.
+- [ ] Tue — R: 1 passage, focus on Matching Headings tactic.
+- [ ] Wed — W: 1 Task 2 essay (40 min). Submit to AI grader same day.
+- [ ] Thu — S: 1 cue card (narrative type, STAR-R). Record, replay, re-record.
+- [ ] Fri — Review error log; re-attempt 3 worst items.
+- [ ] **Sat (3 hr)** — Full Listening mock + analysis.
+- [ ] **Sun (2 hr)** — Lexis bank: build Topic Cluster 1 (Environment). Anki it. AI-grade essay, log issues.
 
-**Saturday (2–3 hrs):**
-- [ ] Full reading test timed (60 min)
-- [ ] Answer review
-
-**Sunday (2–3 hrs):**
-- [ ] Drill T/F/NG
-- [ ] Drill matching headings
-- [ ] Drill sentence completion
-
-**Milestone:** 33+/40 (Band 7.5 threshold).
+**Milestone:** Comfortable with at least 4 question types each in L+R.
 
 ---
 
-### Week 5 — Reading Deep
+## Week 3 — Push accuracy, introduce speed
 
-**Weekday (15 min/day):**
-- [ ] Mon — 1 passage, 12-min limit, log accuracy
-- [ ] Tue — 1 passage, 12-min limit, log accuracy
-- [ ] Wed — 1 passage, 12-min limit, log accuracy
-- [ ] Thu — 1 passage, 12-min limit, log accuracy
-- [ ] Fri — 1 passage, 12-min limit, log accuracy trend
+- [ ] Mon — L S3+S4, accent variety (BBC + ABC AU).
+- [ ] Tue — R: 2 passages back to back, 15 min each.
+- [ ] Wed — W: 1 Task 1 letter (different tone from last week) + 1 Task 2 body paragraph.
+- [ ] Thu — S: P3 abstract questions; record 3 × 90-sec answers.
+- [ ] Fri — Error-log review.
+- [ ] **Sat (3 hr)** — Full Reading mock + analysis.
+- [ ] **Sun (2 hr)** — Lexis Cluster 2 (Tech). AI-grade essay. Add collocations to Anki.
 
-**Saturday (2–3 hrs):**
-- [ ] Full reading test under pressure
-- [ ] Speed analysis
-
-**Sunday (2–3 hrs):**
-- [ ] Study trap questions
-- [ ] Practise inference + paraphrase recognition
-
-**Milestone:** 36+/40 (Band 8.0 ✓).
+**Milestone:** L: 35+/40 on weak section. R: pacing on track.
 
 ---
 
-### Week 6 — Writing
+## Week 4 — Mid-plan diagnostic + Writing focus
 
-**Weekday (15 min/day):**
-- [ ] Mon — Write 1 Task 1 paragraph
-- [ ] Tue — Write 1 Task 2 body paragraph
-- [ ] Wed — Write 1 Task 1 paragraph
-- [ ] Thu — Write 1 Task 2 body paragraph
-- [ ] Fri — Write 1 Task 1 paragraph + review week
+- [ ] Mon — L: timed full section, focus on dropped accents.
+- [ ] Tue — R: 1 passage, focus on T/F/NG with decision tree.
+- [ ] Wed — W: 1 full Task 2 essay (different question type from week 2).
+- [ ] Thu — S: full Part 2 narrative + Part 3 follow-ups.
+- [ ] Fri — Error-log review + Lexis Cluster 3 (Education).
+- [ ] **Sat (3 hr)** — Full mock all 4 skills.
+- [ ] **Sun (2 hr)** — Re-diagnose (mid-plan). Send 1 essay + 1 speaking mock to examiner. Update weights for weeks 5–8.
 
-**Saturday (2–3 hrs):**
-- [ ] Full writing session: Task 1 letter (20 min) + Task 2 essay (40 min)
-
-**Sunday (2–3 hrs):**
-- [ ] Self-mark using Band 7 descriptors
-- [ ] Rewrite weakest paragraph for coherence + vocab variety
-
-**Milestone:** Structured T1 letter · logical T2 with complex sentences.
+**Milestone:** Re-diagnosis complete. Decide: continue or extend to 12 weeks.
 
 ---
 
-### Week 7 — Speaking
+## Week 5 — Speed + Lexical Resource push
 
-**Weekday (15 min/day):**
-- [ ] Mon — Record 2–3 min Part 2 cue card (work topic)
-- [ ] Tue — Record 2–3 min Part 2 cue card (education topic)
-- [ ] Wed — Record 2–3 min Part 2 cue card (hometown topic)
-- [ ] Thu — Record 2–3 min Part 2 cue card (technology topic)
-- [ ] Fri — Record 2–3 min Part 2 cue card (free choice)
+- [ ] Mon — L S4 only × 2 (the band-killer).
+- [ ] Tue — R: 1 passage at 12-min limit.
+- [ ] Wed — W: rewrite weakest essay from weeks 2–4 with examiner feedback applied.
+- [ ] Thu — S: cue cards × 2 from different topics; tutor session 30 min if possible.
+- [ ] Fri — Error log + Lexis Cluster 4 (Health) + Cluster 5 (Work).
+- [ ] **Sat (3 hr)** — Full Writing mock (T1 + T2 by hand, 60 min).
+- [ ] **Sun (2 hr)** — Self-mark W against descriptors + AI grade. Compare.
 
-**Saturday (2–3 hrs):**
-- [ ] Full speaking mock — record all 3 parts
-- [ ] Speaking test strategy review
-
-**Sunday (2–3 hrs):**
-- [ ] Replay recording
-- [ ] Mark hesitations, vocabulary gaps, grammar errors
-- [ ] **Decision: book test or reschedule?** If any skill misses target by >0.5 in mock → push test to August.
-
-**Milestone:** Fluent Part 1–2 · Part 3 opinions justified.
+**Milestone:** R: 36+/40. W: position + extension visible in essays.
 
 ---
 
-### Week 8 — Final Polish
+## Week 6 — Writing depth + Speaking fluency
 
-**Weekday (15 min/day):**
-- [ ] Mon — Review personal error list (all weeks)
-- [ ] Tue — Vocab reinforcement (10 topic words)
-- [ ] Wed — Review error list
-- [ ] Thu — Vocab reinforcement
-- [ ] Fri — Final review + rest
+- [ ] Mon — L: full section. Aim 9/10 minimum.
+- [ ] Tue — R: full mock under pressure.
+- [ ] Wed — W: 1 Task 1 + 1 Task 2 in 60 min real conditions.
+- [ ] Thu — S: full 3-part mock recorded.
+- [ ] Fri — Lexis Cluster 6 (Hometown) + Cluster 7 (Family).
+- [ ] **Sat (3 hr)** — Full Speaking mock + tutor session if available.
+- [ ] **Sun (2 hr)** — Send essay + speaking to examiner for second check. Apply prior fixes.
 
-**Saturday (2–3 hrs):**
-- [ ] Full mock test, all 4 sections, real test conditions
-
-**Sunday (2–3 hrs):**
-- [ ] REST
-- [ ] Light vocab only — NO new material
-
-**Milestone:** Consistent across all 4 bands.
+**Milestone:** Speaking — clear stance in P3; cue card narrative + reflection added.
 
 ---
 
-## Reschedule Rule
+## Week 7 — Final check + decision
 
-If Week 7 mock misses target by >0.5 band in ANY skill → reschedule test to late July or August. One extra month of focused weekends = realistic 0.5 band gain. Better to delay 4 weeks than retake the whole test.
+- [ ] Mon — L: weakest section type drill.
+- [ ] Tue — R: weakest question type drill.
+- [ ] Wed — W: 1 full task pair under exam timing.
+- [ ] Thu — S: full mock + self-assessment.
+- [ ] Fri — Error log full review. Lexis Clusters 8–10 (Media, Crime, Hobbies).
+- [ ] **Sat (3 hr)** — Full all-4-skills mock under real conditions.
+- [ ] **Sun (2 hr)** — Final examiner feedback round. **Decision:** if any skill > 0.5 below target → reschedule test.
+
+**Milestone:** Consistent across all 4. Decision booked.
+
+---
+
+## Week 8 — Taper, not cram
+
+- [ ] Mon — 30 min light L review.
+- [ ] Tue — 30 min light R review.
+- [ ] Wed — Reread own best essay. Reread top error log items.
+- [ ] Thu — 10 min Speaking warm-up — light conversation.
+- [ ] Fri — Logistics check: passport, route, sleep schedule. NO new material.
+- [ ] **Sat (1 hr max)** — Light vocab review. Sleep early.
+- [ ] **Sun** — Test day. Follow test-day protocol on `index.html`.
+
+**Milestone:** Test taken in good condition.
+
+---
+
+## Reschedule rule (Week 7 decision)
+
+If your Week 7 mock misses target by **>0.5 band in any skill** → reschedule. One extra month of focused weekend prep = realistic 0.5 band gain. Cheaper than retake fees and lost time. Don't sit a test you'll have to redo.
+
+## Anti-pattern checklist (cross these off — they look productive but aren't)
+
+- ❌ Watching 3 YouTube strategy videos in a row instead of practising.
+- ❌ Re-reading the same lesson notes.
+- ❌ Doing only Listening + Reading because they're easier to self-grade.
+- ❌ Writing essays you never submit for feedback.
+- ❌ Memorising "advanced" words without collocations.
+- ❌ Skipping the error log because "I'll remember."

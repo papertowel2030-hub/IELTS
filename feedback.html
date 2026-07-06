@@ -3,113 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feedback Paths — Writing &amp; Speaking</title>
+<title>Feedback — BandUp</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
 
-<nav class="topnav">
-  <a href="index.html">← Home</a>
-  <a href="writing.html">Writing</a>
-  <a href="speaking.html">Speaking</a>
-  <a href="band-descriptors.html">Descriptors</a>
-  <a href="error-log.html">Error Log</a>
-</nav>
+      <span class="eyebrow">🔎 Feedback</span>
+      <h1>The missing link for Writing &amp; Speaking</h1>
+      <div class="target">Listening &amp; Reading you mark yourself. Writing &amp; Speaking you can't — people over-estimate their own band by 0.5–1.0 consistently. Without an outside check, you plateau. Aim for one external check roughly every two weeks.</div>
 
-<h1>Feedback Paths — for Writing &amp; Speaking</h1>
-<div class="target">You cannot reliably self-grade Writing or Speaking above Band 6. Without external feedback you plateau. This page lists the realistic options, ranked by cost and accuracy.</div>
+      <div class="next-action">
+        <span class="eyebrow">🗣️ Speaking feedback = me</span>
+        <h2 class="mt0">Book a live Speaking session</h2>
+        <p class="mt0">For Speaking, live coaching beats any app: I score you against the four criteria in real time, push you in Part 3, and fix your top issue on the spot.</p>
+        <a class="btn primary big" href="book-speaking.html">📅 Book with me →</a>
+      </div>
 
-<h2>Why this is the missing link</h2>
-<p>Listening &amp; Reading are objective — you mark them yourself. Writing &amp; Speaking are subjective, and self-evaluation has a documented ceiling: candidates over-estimate their own band by 0.5–1.0 consistently. The Dunning-Kruger trap. Solution: at least <strong>fortnightly</strong> external feedback during the 8-week plan.</p>
+      <h2>Writing — three ways to get graded</h2>
 
-<h2>Option A — Certified ex-examiner (most accurate, highest cost)</h2>
-<ul>
-  <li><strong>What:</strong> Former IELTS examiner marks one essay or one recorded mock against the official rubric, returns scores per criterion + written comments.</li>
-  <li><strong>Cost:</strong> typically £15–35 per task, £25–60 per speaking mock.</li>
-  <li><strong>When to use:</strong> diagnostic (Week 1), mid-plan (Week 4), final (Week 7).</li>
-  <li><strong>Where to find:</strong>
-    <ul>
-      <li><a href="https://www.fiverr.com/categories/writing-translation/proofreading-editing" target="_blank">Fiverr</a> — filter for "IELTS examiner". Read reviews; verify credentials.</li>
-      <li><a href="https://writing9.com" target="_blank">Writing9</a> — has paid examiner-feedback tier.</li>
-      <li>Local IELTS prep centres often offer single-essay scoring without committing to a course.</li>
-      <li>r/IELTS subreddit — vetted examiners advertise occasionally.</li>
-    </ul>
-  </li>
-  <li><strong>Verify:</strong> ask for their examiner code or date they last marked operationally. Real examiners can answer this; coaches who claim "examiner experience" often cannot.</li>
-</ul>
+      <div class="card">
+        <span class="pill blue">Option A · Most accurate</span>
+        <h3 class="mt0">A certified ex-examiner</h3>
+        <p class="mt0">A former IELTS examiner marks one essay against the official rubric and returns a band per criterion with comments. Best used at the start, the mid-point, and the final week.</p>
+        <p class="muted">Where: <a href="https://www.fiverr.com" target="_blank" rel="noopener">Fiverr</a> (filter "IELTS examiner", check reviews), <a href="https://writing9.com" target="_blank" rel="noopener">Writing9</a>'s examiner tier, local prep centres, or the r/IELTS community. <strong>Verify</strong> by asking when they last marked operationally.</p>
+      </div>
 
-<h2>Option B — AI grader (cheap, fast, useful with caveats)</h2>
-<ul>
-  <li><strong>What:</strong> An LLM scores against descriptors. Modern models are reasonable on TR/CC/LR/GRA but less reliable on Pron and on nuanced TR.</li>
-  <li><strong>Cost:</strong> free–£10/mo.</li>
-  <li><strong>Where:</strong>
-    <ul>
-      <li><a href="https://writing9.com" target="_blank">Writing9</a> — auto-grader.</li>
-      <li><a href="https://ieltsonlinetests.com" target="_blank">IELTS Online Tests</a> — auto-grader.</li>
-      <li>ChatGPT / Claude with prompt: <em>"Score this IELTS Task 2 essay against the official descriptors. Give a band per criterion (TR, CC, LR, GRA) with one specific reason per band, then an overall band. Suggest the single most impactful improvement."</em></li>
-    </ul>
-  </li>
-  <li><strong>Caveats:</strong> AI tends to inflate Band 6 essays to Band 7. Treat AI grade as ceiling estimate; assume real band 0.5 lower until verified by an examiner.</li>
-  <li><strong>Best use:</strong> weekly drafts, rapid iteration. NOT a substitute for one human evaluation per fortnight.</li>
-</ul>
+      <div class="card">
+        <span class="pill green">Option B · Cheap &amp; fast</span>
+        <h3 class="mt0">An AI grader</h3>
+        <p class="mt0">Good for rapid weekly iteration on TR/CC/LR/GRA. Use a tool like <a href="https://writing9.com" target="_blank" rel="noopener">Writing9</a>, or paste your essay into Claude/ChatGPT with this prompt:</p>
+        <div class="template">Score this IELTS Task 2 essay against the official band descriptors. Give a band for each criterion (TR, CC, LR, GRA) with one specific reason each, then an overall band, then the single most impactful improvement.</div>
+        <div class="warn"><strong>Caveat:</strong> AI tends to inflate Band-6 essays to Band 7. Treat the AI band as a ceiling — assume your real band is ~0.5 lower until a human confirms it.</div>
+      </div>
 
-<h2>Option C — Peer review with calibrated rubric (free)</h2>
-<ul>
-  <li><strong>What:</strong> A study partner (same target band) marks your essay using a shared rubric; you mark theirs. Calibration matters — both must read the official descriptors first.</li>
-  <li><strong>Cost:</strong> none.</li>
-  <li><strong>Where to find partner:</strong>
-    <ul>
-      <li>r/IELTS, r/EnglishLearning — partner-finding threads.</li>
-      <li>Local English-conversation meetups.</li>
-      <li>iTalki Community → language partners.</li>
-    </ul>
-  </li>
-  <li><strong>Risk:</strong> two Band 5 candidates rarely mark each other to Band 7. Peer review works best as a <em>sanity check</em> on top of AI + occasional examiner.</li>
-</ul>
+      <div class="card">
+        <span class="pill purple">Option C · Free</span>
+        <h3 class="mt0">Calibrated peer review</h3>
+        <p class="mt0">Swap essays with a study partner — but both read the <a href="band-descriptors.html">official descriptors</a> first, or you'll mark each other too kindly. Best as a sanity check on top of A or B. Find partners on r/IELTS or English-conversation meetups.</p>
+      </div>
 
-<h2>Option D — Conversation partner / tutor for Speaking</h2>
-<ul>
-  <li><a href="https://www.italki.com" target="_blank">iTalki</a> — community tutors $5–15/hr; professional tutors $20–40/hr. Filter for "IELTS Speaking preparation" + verified reviews.</li>
-  <li><a href="https://preply.com" target="_blank">Preply</a> — similar marketplace.</li>
-  <li>Local language schools — group mock sessions.</li>
-  <li><strong>Frequency:</strong> 2× per week of 30-min conversation = realistic fluency gain in 8 weeks.</li>
-</ul>
+      <div class="card">
+        <span class="pill">Always do this first</span>
+        <h3 class="mt0">Self-score against the rubric</h3>
+        <ol class="mt0">
+          <li>Open the <a href="band-descriptors.html">band descriptors</a>.</li>
+          <li>Score your essay/recording on each of the 4 criteria — ruthlessly; your bias is to over-score.</li>
+          <li>Find your <em>lowest</em> criterion. That's the bottleneck — drill it next week and log it in the <a href="error-log.html">Error Log</a>.</li>
+          <li>Calibrate: if an examiner/AI marks 0.5 lower than you did, subtract that bias from your future self-scores.</li>
+        </ol>
+      </div>
 
-<h2>Option E — Self-rubric (last resort, but always do it FIRST)</h2>
-<ol>
-  <li>Print the <a href="band-descriptors.html">band descriptors</a>.</li>
-  <li>Score your own essay / recording against each of the 4 criteria. Be ruthless — bias is to over-score yourself.</li>
-  <li>Identify the <em>lowest</em> criterion. That is the bottleneck. Drill it next week.</li>
-  <li>Submit to Option A or B for calibration: if the human / AI marks 0.5 lower than your self-score, your self-bias is +0.5. Subtract that going forward.</li>
-</ol>
+      <h2>Make the feedback count</h2>
+      <div class="step"><strong>1.</strong> Read the comments the same day; highlight your lowest criterion.</div>
+      <div class="step"><strong>2.</strong> Add 3 specific issues to your <a href="error-log.html">Error Log</a>.</div>
+      <div class="step"><strong>3.</strong> Rewrite the worst paragraph (or re-record the cue card) within 48 hours.</div>
+      <div class="step"><strong>4.</strong> Next round, ask: "Last time you flagged X — did I fix it?" People track your progress when prompted.</div>
 
-<h2>Recommended cadence (8-week plan, ~£60–120 total budget)</h2>
-<table>
-  <thead><tr><th>Week</th><th>Writing</th><th>Speaking</th></tr></thead>
-  <tbody>
-    <tr><td>1</td><td>1 essay → examiner (diagnostic)</td><td>1 mock recording → examiner</td></tr>
-    <tr><td>2</td><td>2 essays → AI grader</td><td>2 cue cards → self-rubric</td></tr>
-    <tr><td>3</td><td>2 essays → AI grader</td><td>2 cue cards → peer / partner</td></tr>
-    <tr><td>4</td><td>1 essay → examiner (mid-check)</td><td>1 mock → examiner OR tutor</td></tr>
-    <tr><td>5</td><td>2 essays → AI grader</td><td>2 cue cards → self + tutor 30 min</td></tr>
-    <tr><td>6</td><td>2 essays → AI + peer</td><td>2 cue cards → tutor 30 min</td></tr>
-    <tr><td>7</td><td>1 essay → examiner (final check)</td><td>1 mock → examiner</td></tr>
-    <tr><td>8</td><td>Light review only</td><td>Light conversation only</td></tr>
-  </tbody>
-</table>
+      <div class="pagenav"><a href="model-answers.html">← Model Answers</a><a href="book-speaking.html">Book Speaking →</a></div>
 
-<h2>How to act on feedback (don't waste the spend)</h2>
-<ol>
-  <li>Read the comments same day. Highlight the criterion with the lowest score.</li>
-  <li>Add 3 specific issues from the feedback to your <a href="error-log.html">error log</a>.</li>
-  <li>Rewrite the worst paragraph (Writing) or re-record the same cue card (Speaking) within 48 hours.</li>
-  <li>At the next feedback round, send a covering note: "Last time you flagged X. Did I fix it?" — examiners track progress when prompted.</li>
-</ol>
-
-<div class="nav">
-  <a href="model-answers.html">← Models</a>
-  <a href="index.html">🏠 Home</a>
+    </div></main>
+  </div>
 </div>
-
+<script src="app.js"></script>
 </body>
 </html>

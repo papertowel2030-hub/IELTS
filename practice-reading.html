@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Practice — BandUp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
+
+      <div id="practice"></div>
+
+      <div class="pagenav"><a href="reading.html">← Reading module</a><a href="error-log.html">Error Log →</a></div>
+
+    </div></main>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  "use strict";
+  var S = IELTS.state();
+  if(!S.practice) S.practice = {};
+
+  /* ================= PRACTICE SETS (original content) =================
+     Question types:
+       tfng  — select True/False/Not Given   (opts auto)
+       ynng  — select Yes/No/Not Given       (opts auto)
+       mcq   — buttons A–D                   (a = correct index)
+       gap   — text input                    (a = array of accepted answers, case/space-insensitive)
+       match — select from a shared list     (opts = list, a = correct index)
+  ===================================================================== */
+
+  var SETS = [
+
+  /* ---------- BUILDER · GENERAL ---------- */
+  {
+    id:"b-gt-1", tier:"builder", track:"general",
+    title:"Community centre notices", time:"13 min",
+    intro:"GT Section 1 style — everyday notices. Read fast, answer from the text only.",
+    passage:
+      '<h3>Notice A — Riverside Community Pool: autumn opening</h3>'+
+      '<p>From 1 September, the pool will open at 6.30 am on weekdays for lane swimming only. Family sessions run at weekends from 9 am until 4 pm. Children under eight must be accompanied in the water by an adult at all times.</p>'+
+      '<p>Swimming lessons for beginners take place on Tuesday and Thursday evenings; places must be booked at reception and cannot be reserved by telephone. Lockers are available for a £1 coin, which is returned after use. Please note that the sauna will remain closed until October for maintenance.</p>'+
+      '<h3>Notice B — Autumn evening classes</h3>'+
+      '<p>Evening classes at the Centre begin in the week of 15 September. This term we offer Spanish for beginners (Mondays), digital photography (Wednesdays) and pottery (Thursdays). Classes last 90 minutes and run for ten weeks.</p>'+
+      '<p>The full fee is payable at enrolment; however, students aged over 60 receive a 20% discount, and no charge is made for materials in the photography course. Pottery students should expect to pay approximately £15 for clay and glazes. Enrol online or in person at reception; early booking is advised, as photography filled within days last year.</p>',
+    questions:[
+      {type:"tfng", stem:"The pool opens at 6.30 am every day.", a:"False",
+       explain:"The text says 6.30 am <em>on weekdays</em> — weekends start with family sessions at 9 am. \"Every day\" contradicts \"weekdays\"."},
+      {type:"tfng", stem:"Children under eight must have an adult with them in the water.", a:"True",
+       explain:"Direct paraphrase: \"must be accompanied in the water by an adult at all times\"."},
+      {type:"tfng", stem:"You can reserve a swimming lesson by phone.", a:"False",
+       explain:"\"…cannot be reserved by telephone\" — the statement directly contradicts the text."},
+      {type:"tfng", stem:"The sauna is closed because it is being repaired.", a:"True",
+       explain:"\"Closed until October for maintenance\" — maintenance = repair work. Paraphrase, not matching words."},
+      {type:"tfng", stem:"The pool café serves hot food at weekends.", a:"Not Given",
+       explain:"No café is mentioned anywhere. Not contradicted, just absent → Not Given. (If you wrote False, you used outside reasoning.)"},
+      {type:"tfng", stem:"Pottery classes take place twice a week.", a:"False",
+       explain:"Pottery runs on Thursdays only — once a week. The text states its day explicitly, so this is False, not Not Given."},
+      {type:"tfng", stem:"Last year, the photography course was fully booked very quickly.", a:"True",
+       explain:"\"Photography filled within days last year\" = fully booked very quickly. Classic paraphrase."},
+      {type:"gap", stem:"To use a locker you need a ______, which is given back to you.", a:["£1 coin","1 coin","a £1 coin","one pound coin","£1"], limit:"NO MORE THAN TWO WORDS AND/OR A NUMBER",
+       explain:"\"Lockers are available for a £1 coin, which is returned after use.\""},
+      {type:"gap", stem:"Students over 60 pay ______ less than the full fee.", a:["20%","20 percent","20 per cent"], limit:"NO MORE THAN ONE NUMBER",
+       explain:"\"Students aged over 60 receive a 20% discount.\""},
+      {type:"gap", stem:"Materials for the pottery course cost about ______.", a:["£15","15","15 pounds"], limit:"NO MORE THAN A NUMBER",
+       explain:"\"…expect to pay approximately £15 for clay and glazes.\" \"About\" = \"approximately\"."}
+    ]
+  },
+
+  /* ---------- BUILDER · ACADEMIC ---------- */
+  {
+    id:"b-ac-1", tier:"builder", track:"academic",
+    title:"Urban beekeeping", time:"14 min",
+    intro:"A short Academic-style passage. Practise T/F/NG discipline and one-word completion.",
+    passage:
+      '<p>City rooftops might seem an unlikely home for honeybees, yet urban beekeeping has grown rapidly over the past two decades. London alone now hosts several thousand registered hives, and cities from Paris to Melbourne have followed. One reason the trend took off was a series of alarming reports of bee deaths in the countryside, where intensive farming has removed many of the wildflowers bees depend on.</p>'+
+      '<p>Surprisingly, bees can do rather well in cities. Urban gardens, parks and street trees offer a wide variety of flowering plants across a long season, whereas a farmed landscape may provide a single crop that blooms for only a few weeks. One study of honey samples found that city honey often contained pollen from over a hundred plant species, compared with fewer than twenty in some rural samples. Winter survival rates for urban hives are also generally higher, partly because cities are warmer than the surrounding countryside.</p>'+
+      '<p>Urban beekeeping is not without problems, however. Some researchers warn that fashionable districts now contain too many hives for the nectar available, which means honeybees may compete with wild pollinators such as bumblebees and solitary bees — insects that are often in greater need of protection. In parts of Paris, hive density has passed levels that scientists consider sustainable.</p>'+
+      '<p>The lesson, experts suggest, is that keeping bees is not automatically an act of conservation. Planting nectar-rich flowers, they argue, helps pollinators far more reliably than installing another hive. For those who do keep bees, training matters: a poorly managed colony can spread disease to neighbouring hives. City authorities are therefore beginning to act — Melbourne requires hive registration, while some German cities run compulsory courses for new beekeepers.</p>',
+    questions:[
+      {type:"tfng", stem:"Concern about bee deaths in rural areas helped urban beekeeping grow.", a:"True",
+       explain:"\"One reason the trend took off was a series of alarming reports of bee deaths in the countryside.\""},
+      {type:"tfng", stem:"Farmland usually gives bees a wider range of plants than cities do.", a:"False",
+       explain:"The passage says the opposite: cities offer \"a wide variety of flowering plants\", farmland \"a single crop\"."},
+      {type:"tfng", stem:"City honey has won awards for its flavour.", a:"Not Given",
+       explain:"The study mentions pollen variety — nothing about flavour or awards. Absence of information → Not Given."},
+      {type:"tfng", stem:"Urban hives tend to survive winter better than rural ones.", a:"True",
+       explain:"\"Winter survival rates for urban hives are also generally higher.\""},
+      {type:"tfng", stem:"Honeybees may take food that wild pollinators need.", a:"True",
+       explain:"\"Too many hives for the nectar available… honeybees may compete with wild pollinators.\" Competing for nectar = taking food they need."},
+      {type:"tfng", stem:"Keeping bees always benefits conservation.", a:"False",
+       explain:"\"Keeping bees is <em>not automatically</em> an act of conservation\" directly contradicts \"always\". Watch quantifiers."},
+      {type:"tfng", stem:"New beekeepers in Melbourne must complete a training course.", a:"Not Given",
+       explain:"Trap: Melbourne requires <em>registration</em>; it's <em>German cities</em> that require courses. The text never says whether Melbourne requires training → Not Given."},
+      {type:"gap", stem:"City honey samples contained pollen from more than one hundred plant ______.", a:["species"], limit:"ONE WORD ONLY",
+       explain:"\"…pollen from over a hundred plant species.\""},
+      {type:"gap", stem:"Experts say that planting ______-rich flowers helps pollinators more than adding hives.", a:["nectar"], limit:"ONE WORD ONLY",
+       explain:"\"Planting nectar-rich flowers… helps pollinators far more reliably.\""},
+      {type:"gap", stem:"A badly run colony can pass ______ to hives nearby.", a:["disease","diseases"], limit:"ONE WORD ONLY",
+       explain:"\"A poorly managed colony can spread disease to neighbouring hives.\""},
+      {type:"mcq", stem:"What is the writer's main point in the final paragraph?",
+       opts:["Beekeeping should be banned in city centres","Urban beekeeping needs knowledge and some regulation","German rules are stricter than necessary","Wild pollinators cannot be saved"], a:1,
+       explain:"The paragraph argues bees aren't automatically conservation, training matters, and authorities are starting to regulate — i.e. knowledge + regulation. The other options exaggerate or invent."}
+    ]
+  },
+
+  /* ---------- CORE · GENERAL ---------- */
+  {
+    id:"c-gt-1", tier:"core", track:"general",
+    title:"Staff handbook: flexible working", time:"16 min",
+    intro:"GT Section 2 style — a workplace document. Denser language, stricter paraphrases.",
+    passage:
+      '<h3>Extract from the Hartley &amp; Voss staff handbook</h3>'+
+      '<p>All employees who have completed six months’ continuous service may apply for flexible working arrangements. Applications are not restricted to parents or carers, although the company recognises its particular obligations towards these groups. Employees may make one application in any twelve-month period.</p>'+
+      '<p>Three arrangements are available. <strong>Flexitime</strong> allows staff to vary their start and finish times around the core hours of 10 am to 3 pm, during which everyone must be at work. <strong>Compressed hours</strong> enable a full-time week to be worked over four longer days; note that the maximum working day remains ten hours, in line with our health and safety policy. Finally, <strong>remote working</strong> permits up to three days per week from home, subject to the nature of the role. Staff whose duties require them to handle original client documents are currently excluded from remote working, though the IT department expects its secure document system, due next spring, to remove this restriction.</p>'+
+      '<p>Applications must be made in writing to your line manager, setting out the arrangement requested and its likely effect on your team. The manager will normally respond within fourteen days. Where a request is refused, the refusal must state one of the business reasons listed in this policy — for example, a detrimental impact on customer service — and the employee may appeal in writing within one week of receiving the decision. Appeals are heard by a senior manager not previously involved in the case.</p>'+
+      '<p>Approved arrangements are reviewed after a trial period of three months. Either side may return to the previous pattern at that point; after a successful trial, the change becomes a permanent variation to the employment contract. Employees should understand that a permanent change affects salary where hours are reduced, and may affect eligibility for certain shift allowances.</p>'+
+      '<p>Any employee whose personal circumstances change significantly — for instance, a new caring responsibility — may request an early review, and such requests do not count towards the annual application limit.</p>',
+    questions:[
+      {type:"tfng", stem:"Only parents and carers may apply for flexible working.", a:"False",
+       explain:"\"Applications are <em>not restricted</em> to parents or carers.\" The mention of \"particular obligations\" is the distractor."},
+      {type:"tfng", stem:"Employees must normally wait a year between applications.", a:"True",
+       explain:"\"One application in any twelve-month period\" = wait a year between them."},
+      {type:"tfng", stem:"Under flexitime, staff must be at work between 10 am and 3 pm.", a:"True",
+       explain:"Core hours \"during which everyone must be at work\"."},
+      {type:"tfng", stem:"Compressed hours can involve eleven-hour working days.", a:"False",
+       explain:"\"The maximum working day remains ten hours\" — eleven contradicts it."},
+      {type:"tfng", stem:"Remote working is the most popular arrangement among staff.", a:"Not Given",
+       explain:"No information about popularity or uptake anywhere in the text."},
+      {type:"tfng", stem:"The restriction on staff who handle client documents is expected to be lifted.", a:"True",
+       explain:"\"The IT department expects its secure document system… to remove this restriction.\""},
+      {type:"tfng", stem:"Appeals are decided by the employee's own line manager.", a:"False",
+       explain:"\"Appeals are heard by a senior manager <em>not previously involved</em>\" — the line manager made the original decision."},
+      {type:"gap", stem:"A refusal must state one of the ______ listed in the policy.", a:["business reasons"], limit:"NO MORE THAN TWO WORDS",
+       explain:"\"The refusal must state one of the business reasons listed in this policy.\""},
+      {type:"gap", stem:"An employee has ______ to appeal after receiving the decision.", a:["one week","1 week","a week"], limit:"NO MORE THAN TWO WORDS",
+       explain:"\"…may appeal in writing within one week of receiving the decision.\""},
+      {type:"gap", stem:"New arrangements are checked again after a ______ of three months.", a:["trial period","trial"], limit:"NO MORE THAN TWO WORDS",
+       explain:"\"Reviewed after a trial period of three months.\""},
+      {type:"gap", stem:"A permanent move to shorter hours changes an employee's ______.", a:["salary","pay"], limit:"ONE WORD ONLY",
+       explain:"\"A permanent change affects salary where hours are reduced.\""},
+      {type:"mcq", stem:"The main purpose of the final paragraph is to explain…",
+       opts:["how to cancel an existing arrangement","an exception to the application limit","which staff cannot work remotely","how shift allowances are calculated"], a:1,
+       explain:"An early review after changed circumstances \"does not count towards the annual application limit\" — an exception to the one-per-year rule."}
+    ]
+  },
+
+  /* ---------- CORE · ACADEMIC ---------- */
+  {
+    id:"c-ac-1", tier:"core", track:"academic",
+    title:"The spacing effect", time:"18 min",
+    intro:"Academic passage with Matching Headings — do the headings AFTER skimming, one paragraph at a time.",
+    passage:
+      '<p><span class="pmark">A</span>In 1885 the German psychologist Hermann Ebbinghaus published the results of a strange experiment he had performed on himself. For months he memorised lists of invented, meaningless syllables and then tested how many he could recall after different delays. The pattern he uncovered — rapid forgetting at first, then a slow levelling off — became known as the forgetting curve. He also noticed something more hopeful: material he relearned after forgetting it took less time to master than it had originally, as though the first effort had left an invisible trace.</p>'+
+      '<p><span class="pmark">B</span>Buried in his data was a second discovery that modern psychology regards as one of its most dependable findings. Study time produces stronger memories when it is spread across several sessions than when it is concentrated into one. This “spacing effect” has since been demonstrated in hundreds of experiments — with children and adults, with vocabulary, mathematics, surgery skills and music, in laboratories and in classrooms. A major review that combined the results of more than three hundred comparisons concluded that spaced study reliably beats massed study, often by a wide margin.</p>'+
+      '<p><span class="pmark">C</span>Why, then, do most learners still cram? The answer appears to be that massed practice deceives the person doing it. Repeating material in a single sitting makes it feel increasingly familiar and easy, and learners misread this ease as learning. The fluency is real but temporary: tested a week later, crammers typically remember far less than spaced learners, yet immediately after studying they are often <em>more</em> confident. Learners, in other words, are poor judges of their own memory, and they abandon the method that works because it feels harder.</p>'+
+      '<p><span class="pmark">D</span>Researchers still debate exactly why spacing works. One account holds that when a memory has begun to fade, retrieving it requires effort, and it is precisely this effort that strengthens the memory — a so-called desirable difficulty. Another points to context: study sessions separated in time happen in different moods, places and mental states, so the memory acquires several independent retrieval cues instead of one. A third notes that sleep between sessions gives the brain repeated opportunities to consolidate what was learned. These explanations are not rivals so much as overlapping parts of a story that is still being written.</p>'+
+      '<p><span class="pmark">E</span>For the practical learner, the key question is how long the gaps should be. The evidence suggests the answer depends on how long you need to remember: the review mentioned above found that the ideal gap between sessions is roughly ten to twenty per cent of the total time you want the memory to last. A test in a month justifies revisiting material every few days; knowledge intended for a lifetime deserves gaps of months. Software now automates this arithmetic, scheduling each fact for review just before it would otherwise be forgotten.</p>',
+    headings:[
+      "Why spreading study out works: competing explanations",
+      "A nineteenth-century discovery about forgetting",
+      "Choosing the right gap between sessions",
+      "The evidence that spacing beats cramming",
+      "When cramming really is the better choice",
+      "Why learners trust the method that fails them",
+      "Criticisms of Ebbinghaus's experiment"
+    ],
+    questions:[
+      {type:"match", stem:"Paragraph A", opts:"headings", a:1,
+       explain:"A is about Ebbinghaus's 1885 self-experiment and the forgetting curve — \"a nineteenth-century discovery about forgetting\". Heading vii is a trap: no criticism appears."},
+      {type:"match", stem:"Paragraph B", opts:"headings", a:3,
+       explain:"B presents the accumulated evidence (hundreds of experiments, a 300-comparison review) that spaced beats massed study."},
+      {type:"match", stem:"Paragraph C", opts:"headings", a:5,
+       explain:"C explains why learners keep cramming: fluency feels like learning, so they \"trust the method that fails them\". Heading v is a trap — the passage never says cramming is better."},
+      {type:"match", stem:"Paragraph D", opts:"headings", a:0,
+       explain:"D lists three candidate explanations (effortful retrieval, contextual cues, sleep consolidation) — \"competing explanations\"."},
+      {type:"match", stem:"Paragraph E", opts:"headings", a:2,
+       explain:"E answers \"how long should the gaps be?\" — choosing the right gap."},
+      {type:"tfng", stem:"Ebbinghaus memorised lists of real words.", a:"False",
+       explain:"He used \"invented, meaningless syllables\" — the statement contradicts the text."},
+      {type:"tfng", stem:"The spacing effect has only been demonstrated with adults.", a:"False",
+       explain:"\"With children and adults\" — \"only adults\" contradicts it."},
+      {type:"tfng", stem:"Ebbinghaus's findings were ignored during his lifetime.", a:"Not Given",
+       explain:"The passage says nothing about how his work was received. No information → Not Given."},
+      {type:"tfng", stem:"Immediately after cramming, learners often feel more confident than spaced learners.", a:"True",
+       explain:"\"Immediately after studying they are often <em>more</em> confident\" — despite remembering less a week later."},
+      {type:"gap", stem:"Relearning forgotten material took less ______ than learning it the first time.", a:["time"], limit:"ONE WORD ONLY",
+       explain:"\"Material he relearned… took less time to master than it had originally.\""},
+      {type:"gap", stem:"Learners wrongly interpret ______ as evidence of learning.", a:["ease","fluency"], limit:"ONE WORD ONLY",
+       explain:"\"Learners misread this ease as learning\" (the passage also calls it fluency — both accepted)."},
+      {type:"gap", stem:"One theory says effortful ______ of a fading memory strengthens it.", a:["retrieval","retrieving"], limit:"ONE WORD ONLY",
+       explain:"\"Retrieving it requires effort, and it is precisely this effort that strengthens the memory.\""},
+      {type:"gap", stem:"The ideal gap is about 10–20% of how long the memory needs to ______.", a:["last"], limit:"ONE WORD ONLY",
+       explain:"\"…ten to twenty per cent of the total time you want the memory to last.\""},
+      {type:"mcq", stem:"Which statement best reflects the writer's overall view?",
+       opts:["Cramming should be made impossible by exam design","Learners' feelings about studying are a reliable guide","Spacing is well proven and learners should schedule for it","Psychologists have fully explained why spacing works"], a:2,
+       explain:"The passage: evidence is overwhelming (B), feelings mislead (C), mechanisms are still debated (D) — so schedule deliberately (E). Option D's \"fully explained\" contradicts paragraph D."}
+    ]
+  },
+
+  /* ---------- STRETCH · BOTH TRACKS ---------- */
+  {
+    id:"s-1", tier:"stretch", track:null,
+    title:"The myth of multitasking", time:"20 min",
+    intro:"A dense argumentative passage — Yes/No/Not Given tests the WRITER'S claims, not facts. Matching features included.",
+    passage:
+      '<p>The modern knowledge worker toggles between email, chat, documents and meetings dozens of times an hour, encouraged by devices engineered to interrupt. Many of us take pride in this, describing ourselves as skilled multitaskers. The claim deserves scepticism: a substantial body of research suggests that, for tasks demanding attention, multitasking is largely an illusion.</p>'+
+      '<p>The foundational work comes from laboratory studies of task-switching. In a series of experiments, David Meyer and his colleagues showed that alternating between two tasks carries a measurable time cost each time attention is redirected, and that this cost grows as the tasks become more complex or less familiar. What feels like doing two things at once is, cognitively, rapid alternation — with a toll charged at every switch. Over a working day of constant toggling, the researchers estimated, these tolls can consume a substantial fraction of available time.</p>'+
+      '<p>If practice made perfect, habitual multitaskers should at least switch efficiently. A well-known Stanford study led by Eyal Ophir found the opposite. People who reported heavy everyday media multitasking performed <em>worse</em> than light multitaskers at filtering out irrelevant information, worse at holding items in memory — and, most strikingly, worse at task-switching itself. Constant switching, the authors suggested, may train a kind of scattered attention that undermines the very skill it appears to exercise.</p>'+
+      '<p>There are qualifications. Genuinely automatic activities pair without much cost — most adults can walk and talk. And a research programme by Jason Watson and David Strayer identified a tiny group, around one in forty, whose performance genuinely did not degrade when driving while conversing on a phone: so-called supertaskers. Yet this exception offers little comfort, for related work by David Sanbonmatsu and colleagues found that the people most confident in their multitasking ability tended to perform worst — those who believe they are the exception are usually the rule.</p>'+
+      '<p>The practical conclusion is unfashionable but simple. Attention-demanding work is best done in single-task blocks, with communication batched into scheduled intervals rather than answered as it arrives. Far from being a quaint discipline, the capacity for sustained, undivided attention may be the defining professional skill of the coming decades — and, like a muscle, it strengthens with deliberate, gradually extended use.</p>',
+    features:["Meyer and colleagues","Ophir's Stanford team","Watson and Strayer","Sanbonmatsu and colleagues"],
+    questions:[
+      {type:"ynng", stem:"Most people can give full attention to two demanding tasks at the same time.", a:"No",
+       explain:"The writer's view: \"what feels like doing two things at once is… rapid alternation\", and multitasking is \"largely an illusion\". The claim contradicts the writer → No."},
+      {type:"ynng", stem:"Heavy media multitaskers are better than others at switching between tasks.", a:"No",
+       explain:"Ophir's study found they were \"worse at task-switching itself\"."},
+      {type:"ynng", stem:"Switching costs increase with task complexity.", a:"Yes",
+       explain:"\"This cost grows as the tasks become more complex or less familiar.\""},
+      {type:"ynng", stem:"Employers should prohibit workplace chat applications.", a:"Not Given",
+       explain:"The writer recommends <em>batching</em> communication, but never proposes banning chat tools. Recommendation ≠ prohibition → Not Given."},
+      {type:"ynng", stem:"Confidence in one's multitasking ability is a good predictor of real skill.", a:"No",
+       explain:"Sanbonmatsu: \"the people most confident… tended to perform worst\" — confidence predicts the opposite."},
+      {type:"match", stem:"…measured the time lost each time attention switches between tasks.", opts:"features", a:0,
+       explain:"Meyer's task-switching experiments: \"a measurable time cost each time attention is redirected\"."},
+      {type:"match", stem:"…found that frequent multitaskers filter out irrelevant information poorly.", opts:"features", a:1,
+       explain:"Ophir's Stanford study: heavy multitaskers were \"worse… at filtering out irrelevant information\"."},
+      {type:"match", stem:"…identified a small minority whose performance does not drop when doing two things.", opts:"features", a:2,
+       explain:"Watson and Strayer's \"supertaskers\" — about one in forty."},
+      {type:"match", stem:"…showed that self-belief about multitasking is linked to worse performance.", opts:"features", a:3,
+       explain:"Sanbonmatsu and colleagues."},
+      {type:"mcq", stem:"What does the writer suggest about people who believe they are 'supertaskers'?",
+       opts:["They should be studied further","They are usually mistaken about themselves","They make the best drivers","They represent about half the population"], a:1,
+       explain:"\"Those who believe they are the exception are usually the rule\" — i.e. usually mistaken."},
+      {type:"mcq", stem:"The writer's main purpose in the passage is to…",
+       opts:["describe how devices are designed to interrupt","argue that multitasking is mostly illusory and attention should be protected","prove that supertaskers do not exist","compare American and European research methods"], a:1,
+       explain:"The thesis is stated in paragraph 1 (\"largely an illusion\") and the conclusion prescribes protecting attention. Option C is too strong — supertaskers DO exist, rarely."},
+      {type:"gap", stem:"Cognitively, the brain ______ rapidly between tasks rather than processing them in parallel.", a:["alternates","switches","toggles"], limit:"ONE WORD ONLY",
+       explain:"\"What feels like doing two things at once is, cognitively, rapid alternation.\""},
+      {type:"gap", stem:"The writer says sustained attention strengthens like a ______ when trained deliberately.", a:["muscle"], limit:"ONE WORD ONLY",
+       explain:"\"Like a muscle, it strengthens with deliberate, gradually extended use.\" (That's why the Focus Timer exists.)"}
+    ]
+  }
+  ];
+
+  var TIERS = [
+    {key:"builder", name:"Builder", range:"Band 5.5–6.5", blurb:"Shorter texts, clear paraphrases. Build the habit of answering from the text only."},
+    {key:"core",    name:"Core",    range:"Band 6.5–7.5", blurb:"Real exam density. Stricter paraphrases, classic traps, full question-type mix."},
+    {key:"stretch", name:"Stretch", range:"Band 7.5+",    blurb:"Dense argumentative text, writer's-opinion questions, subtle distractors."}
+  ];
+
+  var host = document.getElementById("practice");
+
+  function visibleSets(){
+    var tr = IELTS.track();
+    return SETS.filter(function(s){ return !s.track || s.track === tr; });
+  }
+  function best(id){ return S.practice[id] || null; }
+
+  /* ---------------- Home: tier list ---------------- */
+  function home(){
+    var h = '<span class="eyebrow">🧪 Reading practice</span>'+
+      '<h1>Practice sets — scored instantly</h1>'+
+      '<p class="lead">Original passages written to exam spec, at three difficulty tiers. One set at a time; every answer comes with the reasoning. Misses go straight to your Error Log.</p>'+
+      '<div class="target"><strong>How to use:</strong> do ONE set per sitting, timed. Check answers, read every explanation (even for ones you got right), then log your misses. Retrying a set after a few days is spaced retrieval — it counts as study, not cheating.<sup class="cite"><a href="sources.html#r1">1</a></sup></div>';
+    TIERS.forEach(function(t){
+      var sets = visibleSets().filter(function(s){ return s.tier === t.key; });
+      if(!sets.length) return;
+      h += '<h2><span class="tier-badge '+t.key+'">'+t.name+'</span> &nbsp;'+t.range+'</h2><p class="muted">'+t.blurb+'</p>';
+      sets.forEach(function(s){
+        var b = best(s.id);
+        var score = b ? '<span class="pill green">Best: '+b.best+'/'+b.total+'</span>' : '<span class="pill">Not attempted</span>';
+        h += '<div class="card set-card" data-set="'+s.id+'">'+
+             '<div class="row" style="display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap">'+
+             '<strong>'+s.title+'</strong><span>'+score+' <span class="badge-time">⏱ '+s.time+'</span></span></div>'+
+             '<p class="muted mt0" style="margin-bottom:0">'+s.intro+'</p></div>';
+      });
+    });
+    h += '<div class="callout">Want the technique first? The <a href="reading.html">Reading module</a> teaches the tactic for every question type used here.</div>';
+    host.innerHTML = h;
+    host.querySelectorAll(".set-card").forEach(function(c){
+      c.addEventListener("click", function(){ run(c.getAttribute("data-set")); window.scrollTo({top:0}); });
+    });
+  }
+
+  /* ---------------- Runner ---------------- */
+  function optListFor(set, q){
+    if(q.type==="tfng") return ["True","False","Not Given"];
+    if(q.type==="ynng") return ["Yes","No","Not Given"];
+    if(q.opts==="headings") return set.headings;
+    if(q.opts==="features") return set.features;
+    return q.opts;
+  }
+  function norm(x){ return String(x).toLowerCase().replace(/[£$]/g,"").replace(/[^a-z0-9% ]/g,"").replace(/\s+/g," ").trim(); }
+
+  function run(id){
+    var set = SETS.filter(function(s){return s.id===id;})[0];
+    if(!set) return home();
+    var roman = ["i","ii","iii","iv","v","vi","vii","viii"];
+    var h = '<span class="eyebrow"><span class="tier-badge '+set.tier+'">'+set.tier+'</span> · reading practice</span>'+
+      '<h1>'+set.title+'</h1>'+
+      '<p class="lead">'+set.intro+'</p>'+
+      '<div class="drill">⏱ Suggested time: <strong>'+set.time+'</strong> — set the <a href="timer.html" target="_blank" rel="noopener">Focus Timer</a> or your phone. Real pacing is part of the practice.</div>'+
+      '<div class="passage">'+set.passage+'</div>';
+    if(set.headings){
+      h += '<div class="card"><strong>List of headings</strong><ol style="list-style:none;padding-left:0;margin:.4rem 0 0">'+
+        set.headings.map(function(x,i){return '<li><strong>'+roman[i]+'</strong> &nbsp;'+x+'</li>';}).join("")+'</ol></div>';
+    }
+    h += '<h2>Questions</h2><div id="qs"></div>'+
+      '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:1.2rem 0">'+
+      '<button class="btn primary big" id="check">Check my answers</button>'+
+      '<button class="btn ghost" id="back">← All sets</button></div>'+
+      '<div id="result"></div>';
+    host.innerHTML = h;
+
+    var qhost = document.getElementById("qs");
+    set.questions.forEach(function(q, qi){
+      var d = document.createElement("div");
+      d.className = "pq"; d.setAttribute("data-qi", qi);
+      var inner = '<p class="stem"><span class="qn">'+(qi+1)+'.</span>'+q.stem+'</p>';
+      var opts = optListFor(set, q);
+      if(q.type==="gap"){
+        inner += '<input type="text" autocomplete="off" spellcheck="false" aria-label="Answer '+(qi+1)+'">'+
+                 (q.limit ? '<div class="limit">Write '+q.limit+' from the passage.</div>' : '');
+      } else if(q.type==="tfng"||q.type==="ynng"){
+        inner += '<div class="opts">'+opts.map(function(o){
+          return '<button class="opt" data-v="'+o+'">'+o+'</button>';}).join("")+'</div>';
+      } else if(q.type==="match"){
+        var useRoman = q.opts==="headings";
+        inner += '<select aria-label="Answer '+(qi+1)+'"><option value="">— choose —</option>'+
+          opts.map(function(o,i){return '<option value="'+i+'">'+(useRoman?roman[i]:String.fromCharCode(65+i))+' — '+o+'</option>';}).join("")+'</select>';
+      } else { // mcq
+        inner += '<div class="opts" style="flex-direction:column;align-items:stretch">'+opts.map(function(o,i){
+          return '<button class="opt" style="text-align:left" data-v="'+i+'">'+String.fromCharCode(65+i)+'. '+o+'</button>';}).join("")+'</div>';
+      }
+      d.innerHTML = inner;
+      // toggle-select behaviour for button groups
+      d.querySelectorAll(".opt").forEach(function(b){
+        b.addEventListener("click", function(){
+          if(d.getAttribute("data-locked")) return;
+          d.querySelectorAll(".opt").forEach(function(x){ x.classList.remove("correct"); x.style.outline=""; });
+          b.style.outline = "2px solid var(--blue)";
+          d.setAttribute("data-picked", b.getAttribute("data-v"));
+        });
+      });
+      qhost.appendChild(d);
+    });
+
+    document.getElementById("back").addEventListener("click", home);
+    document.getElementById("check").addEventListener("click", function(){ score(set); });
+  }
+
+  function score(set){
+    var right = 0, misses = [];
+    var qEls = host.querySelectorAll(".pq");
+    var unanswered = 0;
+    set.questions.forEach(function(q, qi){
+      var d = qEls[qi];
+      d.setAttribute("data-locked","1");
+      var opts = optListFor(set, q);
+      var mine = null, ok = false, mineLabel = "", correctLabel = "";
+      if(q.type==="gap"){
+        var inp = d.querySelector("input");
+        mine = inp.value; inp.disabled = true;
+        mineLabel = mine.trim() || "(blank)";
+        correctLabel = q.a[0];
+        ok = q.a.some(function(a){ return norm(a) === norm(mine); }) && norm(mine) !== "";
+      } else if(q.type==="match"){
+        var sel = d.querySelector("select");
+        mine = sel.value; sel.disabled = true;
+        mineLabel = mine === "" ? "(blank)" : opts[+mine];
+        correctLabel = opts[q.a];
+        ok = mine !== "" && +mine === q.a;
+      } else {
+        mine = d.getAttribute("data-picked");
+        d.querySelectorAll(".opt").forEach(function(b){ b.disabled = true; });
+        if(q.type==="mcq"){
+          mineLabel = mine==null ? "(blank)" : opts[+mine];
+          correctLabel = opts[q.a];
+          ok = mine!=null && +mine === q.a;
+        } else {
+          mineLabel = mine==null ? "(blank)" : mine;
+          correctLabel = q.a;
+          ok = mine === q.a;
+        }
+      }
+      if(mineLabel==="(blank)") unanswered++;
+      if(ok) right++;
+      else misses.push({q:q, mine:mineLabel, correct:correctLabel});
+      d.classList.add(ok ? "right" : "miss");
+      d.insertAdjacentHTML("beforeend",
+        '<div class="verdict">'+(ok ? "✓ Correct" : "✗ Yours: "+mineLabel+" · Answer: <strong>"+correctLabel+"</strong>")+'</div>'+
+        '<div class="why"><strong>Why:</strong> '+q.explain+'</div>');
+    });
+
+    var total = set.questions.length;
+    var prev = S.practice[set.id];
+    var isBest = !prev || right > prev.best;
+    S.practice[set.id] = { best: isBest ? right : prev.best, total: total, last: Date.now() };
+    IELTS.save(); IELTS.touchStreak();
+
+    var pct = Math.round(right/total*100);
+    var msg = pct===100 ? "Perfect — move up a tier." :
+              pct>=80 ? "Strong. Read the explanations for your misses, then log them." :
+              pct>=60 ? "Solid base — your misses below are exactly what to drill this week." :
+              "Good data. Every miss below tells you what to train — that's the point of practice.";
+    var res = '<div class="score-box"><div class="big">'+right+' / '+total+'</div>'+
+      '<div>'+msg+(isBest && prev ? ' <span class="pill green">New best!</span>':'')+'</div>'+
+      (unanswered? '<div class="muted" style="font-size:.85rem;margin-top:.3rem">'+unanswered+' left blank — in the real test, never leave blanks; there is no penalty for guessing.</div>':'')+
+      '</div>';
+    if(misses.length){
+      res += '<div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem">'+
+        '<button class="btn primary" id="log-misses">📋 Add '+misses.length+' miss'+(misses.length>1?'es':'')+' to Error Log</button>'+
+        '<button class="btn ghost" id="back2">← All sets</button></div>';
+    } else {
+      res += '<div style="margin-bottom:1rem"><button class="btn ghost" id="back2">← All sets</button></div>';
+    }
+    var box = document.getElementById("result");
+    box.innerHTML = res;
+    document.getElementById("check").style.display = "none";
+    box.scrollIntoView({behavior:"smooth"});
+
+    var b2 = document.getElementById("back2");
+    if(b2) b2.addEventListener("click", function(){ home(); window.scrollTo({top:0}); });
+    var lg = document.getElementById("log-misses");
+    if(lg) lg.addEventListener("click", function(){
+      misses.forEach(function(m){
+        var reason = "Missed the paraphrase";
+        if((m.q.type==="tfng"||m.q.type==="ynng") && (String(m.correct).indexOf("Not Given")>-1 || String(m.mine).indexOf("Not Given")>-1)) reason = "Not Given vs False";
+        else if(m.q.type==="match") reason = "Wrong tactic for type";
+        S.errorLog.unshift({
+          id: Date.now()+""+Math.floor(Math.random()*99),
+          date: new Date().toISOString().slice(0,10),
+          skill: "reading", reason: reason,
+          source: "Practice: "+set.title,
+          mine: m.mine, correct: String(m.correct),
+          action: "Re-read the sentence in the passage and find the exact paraphrase.",
+          redo: false
+        });
+      });
+      IELTS.save(); IELTS.toast("✓ "+misses.length+" added to your Error Log");
+      lg.disabled = true; lg.textContent = "✓ Logged";
+    });
+  }
+
+  document.addEventListener("track-changed", home);
+  home();
+})();
+</script>
+</body>
+</html>

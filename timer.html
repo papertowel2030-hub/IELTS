@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Focus Timer — BandUp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
+
+      <span class="eyebrow">⏱️ Focus Timer</span>
+      <h1>One block. One task.</h1>
+      <p class="lead">Starting is the hard part. Pick a length, name the <em>one</em> thing you'll do, and go. When the bell rings, you're done — take the break, guilt-free.</p>
+
+      <div class="card center">
+        <label class="field" for="task" style="text-align:left">What's the one task this block?</label>
+        <input id="task" placeholder="e.g. Listening Section 1 + log errors" style="text-align:center">
+
+        <div class="btn-row center" style="justify-content:center; margin-top:1rem">
+          <button class="btn ghost preset" data-min="15">15 min</button>
+          <button class="btn primary preset" data-min="25">25 min</button>
+          <button class="btn ghost preset" data-min="50">50 min</button>
+          <button class="btn ghost preset" data-min="5">5 min break</button>
+        </div>
+
+        <div class="timer-face" id="face">25:00</div>
+        <div class="progress green" style="max-width:320px;margin:0 auto 1rem"><span id="bar" style="width:100%"></span></div>
+
+        <div class="btn-row center" style="justify-content:center">
+          <button class="btn success big" id="startBtn">▶ Start</button>
+          <button class="btn ghost" id="resetBtn">Reset</button>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat"><div class="num" id="sessCount">0</div><div class="lbl">Focus blocks done</div></div>
+        <div class="stat"><div class="num" id="focusMin">0</div><div class="lbl">Minutes focused</div></div>
+      </div>
+
+      <div class="callout"><strong>Why 25 minutes?</strong> Short, defined blocks lower the "activation energy" to start and protect your limited working memory from overload.<sup class="cite"><a href="sources.html#r5">5</a></sup> Do a block, tick it off, repeat.</div>
+
+      <div class="pagenav"><a href="index.html">← Home</a><a href="study-plan.html">Study Plan →</a></div>
+
+    </div></main>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  var S = IELTS.state();
+  var total = 25*60, remaining = total, timer = null, running = false;
+  var face = document.getElementById("face"), bar = document.getElementById("bar");
+  var startBtn = document.getElementById("startBtn"), resetBtn = document.getElementById("resetBtn");
+  var sessCount = document.getElementById("sessCount"), focusMin = document.getElementById("focusMin");
+
+  function fmt(s){ var m=Math.floor(s/60), ss=s%60; return (m<10?"0":"")+m+":"+(ss<10?"0":"")+ss; }
+  function paint(){ face.textContent = fmt(remaining); bar.style.width = (total? (remaining/total*100):0)+"%"; }
+  function stats(){ sessCount.textContent = S.timerSessions||0; focusMin.textContent = S.focusMinutes||0; }
+
+  function setPreset(min){
+    stop(); total = min*60; remaining = total; paint();
+    document.querySelectorAll(".preset").forEach(function(b){
+      var on = parseInt(b.dataset.min,10)===min;
+      b.classList.toggle("primary", on); b.classList.toggle("ghost", !on);
+    });
+    currentMin = min;
+  }
+  var currentMin = 25;
+  document.querySelectorAll(".preset").forEach(function(b){
+    b.addEventListener("click", function(){ setPreset(parseInt(b.dataset.min,10)); });
+  });
+
+  function tick(){
+    remaining--;
+    if(remaining<=0){ remaining=0; paint(); finish(); return; }
+    paint();
+  }
+  function start(){ if(running) return; running=true; startBtn.textContent="⏸ Pause"; startBtn.classList.remove("success"); startBtn.classList.add("primary"); timer=setInterval(tick,1000); }
+  function pause(){ running=false; startBtn.textContent="▶ Resume"; startBtn.classList.add("success"); startBtn.classList.remove("primary"); clearInterval(timer); }
+  function stop(){ running=false; clearInterval(timer); startBtn.textContent="▶ Start"; startBtn.classList.add("success"); startBtn.classList.remove("primary"); }
+  function finish(){
+    stop();
+    try { beep(); } catch(e){}
+    // only count real focus blocks (not the 5-min break)
+    if(currentMin>=15){
+      S.timerSessions = (S.timerSessions||0)+1;
+      S.focusMinutes = (S.focusMinutes||0)+currentMin;
+      IELTS.save(); IELTS.touchStreak(); stats();
+      IELTS.toast("🔔 Block done — nice work! Take a break.");
+    } else {
+      IELTS.toast("🔔 Break's over — back to it.");
+    }
+    remaining = total; paint();
+  }
+  function beep(){
+    var ctx = new (window.AudioContext||window.webkitAudioContext)();
+    var o = ctx.createOscillator(), g = ctx.createGain();
+    o.connect(g); g.connect(ctx.destination); o.type="sine"; o.frequency.value=660;
+    g.gain.setValueAtTime(0.001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.3, ctx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.8);
+    o.start(); o.stop(ctx.currentTime+0.85);
+  }
+
+  startBtn.addEventListener("click", function(){ running ? pause() : start(); });
+  resetBtn.addEventListener("click", function(){ stop(); remaining=total; paint(); });
+
+  setPreset(25); stats();
+})();
+</script>
+</body>
+</html>

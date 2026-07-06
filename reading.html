@@ -3,117 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reading — Target Band 8.0</title>
+<title>Reading — BandUp</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
 
-<nav class="topnav">
-  <a href="index.html">← Home</a>
-  <a href="listening.html">Listening</a>
-  <a href="writing.html">Writing</a>
-  <a href="speaking.html">Speaking</a>
-  <a href="band-descriptors.html">Descriptors</a>
-  <a href="error-log.html">Error Log</a>
-  <a href="lexis-bank.html">Lexis</a>
-</nav>
+      <span class="eyebrow">📖 Reading · 7 lessons</span>
+      <h1>Reading</h1>
+      <p class="lead">40 questions in 60 minutes, and <strong>no extra time to copy answers</strong> — you write straight onto the answer sheet. Content below adapts to your test (toggle Academic/General in the sidebar).</p>
+      <div class="target">Rough targets — <span data-track="general">General: ~34/40 → Band 7 · ~37/40 → Band 8.</span><span data-track="academic">Academic: ~30/40 → Band 7 · ~35/40 → Band 8.</span> Same question types either way; the difference is the texts.</div>
 
-<h1>Reading — Target Band 8.0</h1>
-<div class="target">36 of 40 correct in 60 min. GT: 3 sections, easy → hard. Academic: 3 long passages of equal length. No extra transfer time.</div>
+      <div class="stepper" data-skill="reading">
 
-<div class="callout"><strong>Time budget (GT):</strong> S1 ≈ 17 min · S2 ≈ 18 min · S3 ≈ 23 min · transfer + check ≈ 2 min. Hardest section gets the most time, not equal time.</div>
+        <div class="lesson" data-title="How Reading works" data-time="3 min">
+          <p data-track="general"><strong>General Training:</strong> three parts that get harder — everyday notices/ads, then work-related texts, then one longer general-interest passage.</p>
+          <p data-track="academic"><strong>Academic:</strong> three long passages (700–900 words each) of roughly <em>equal</em> difficulty, from journals, books and magazines.</p>
 
-<h2>Mindset shift: paraphrase recognition, not skimming</h2>
-<p>Old advice: "Skim → scan." For Band 8 this is not enough. The real skill is <strong>recognising that a question word X has been replaced by a synonym / paraphrase Y in the passage</strong>. Train this directly.</p>
+          <div class="callout" data-track="general"><strong>Time budget (General):</strong> Section 1 ≈ 17 min · Section 2 ≈ 18 min · Section 3 ≈ 23 min. The hardest section gets the most time — not equal time.</div>
+          <div class="callout" data-track="academic"><strong>Time budget (Academic):</strong> ~20 min per passage, since they're equal difficulty. Bank spare time on the passage you find easiest.</div>
 
-<h3>Paraphrase drill (do daily)</h3>
-<div class="step">Take any Cambridge IELTS passage + its question set. For each question, find the question word in the passage. Underline both. After 20 questions you start <em>predicting</em> paraphrase patterns (e.g. "increase" → "rise / growth / upward trend / surge / climb").</div>
+          <div class="warn"><strong>The #1 time-killer:</strong> there is no transfer window. Write each answer on the answer sheet <em>as you go</em>. People who "copy at the end" run out of time.</div>
+        </div>
 
-<h2>Question-type strategy (the tactic changes per type)</h2>
-<table>
-  <thead><tr><th>Type</th><th>Order to use</th><th>Tactic</th></tr></thead>
-  <tbody>
-    <tr><td>Matching headings</td><td><strong>FIRST</strong> if present</td><td>Skim each paragraph for gist (topic sentence + last sentence + repeated noun). Headings = the macro view; do them before micro questions ruin your fresh read.</td></tr>
-    <tr><td>True / False / Not Given</td><td>After headings</td><td>Find the relevant sentence first, then judge. Decision tree below.</td></tr>
-    <tr><td>Yes / No / Not Given</td><td>Same as T/F/NG</td><td>Same rules but applied to the writer's <em>opinion</em>, not facts.</td></tr>
-    <tr><td>Matching information (paragraph A–G)</td><td>Last — they're slow</td><td>Scan for unique nouns / proper names. Cross out used paragraphs ONLY if the rubric says "use once".</td></tr>
-    <tr><td>Sentence / summary / note completion</td><td>Mid</td><td>Predict word class. The answer is in passage word-for-word (no synonyms accepted).</td></tr>
-    <tr><td>Multiple choice</td><td>Mid</td><td>Eliminate 2 wrong options first. Often the trap = a true statement that doesn't answer the question.</td></tr>
-    <tr><td>Matching features (people / studies)</td><td>Mid</td><td>List names down a column, scan paragraph for each name, jot what's said.</td></tr>
-  </tbody>
-</table>
+        <div class="lesson" data-title="The core skill: paraphrase recognition" data-time="3 min">
+          <p>Everyone says "skim and scan". For Band 7+ that isn't enough. The real skill is spotting that a word in the question has been <strong>swapped for a synonym</strong> in the passage.</p>
+          <div class="step">Question says <em>"increase"</em> → the passage might say <em>rise, growth, upward trend, surge, climb, jump</em>. Your job is to recognise they mean the same thing.</div>
+          <div class="drill"><strong>Paraphrase drill (daily):</strong> take any Cambridge passage + questions. For each question, find the matching sentence and <em>underline both</em> the question word and its paraphrase in the text. After ~20, you start predicting the patterns.</div>
+          <div class="quiz">
+            <p class="q">Question: "The scheme was <strong>abandoned</strong> due to cost." Which passage phrase is the paraphrase to hunt for?</p>
+            <div class="opts">
+              <button class="opt">"the scheme was expensive to run"</button>
+              <button class="opt" data-correct="true">"the project was scrapped because it proved too costly"</button>
+              <button class="opt">"the scheme was popular with residents"</button>
+            </div>
+            <div class="explain">"abandoned" → "scrapped", and "due to cost" → "because it proved too costly". Matching <em>meaning</em>, not matching words, is the whole game.</div>
+          </div>
+        </div>
 
-<h2>True / False / Not Given — decision tree</h2>
-<div class="warn">
-<ol>
-  <li>Find the sentence(s) in the passage that mention the question topic.</li>
-  <li>Compare the <strong>claim</strong> in the question to what the passage says.</li>
-  <li>Ask: "Does the passage <em>support</em>, <em>contradict</em>, or <em>stay silent</em> on this claim?"
-    <ul>
-      <li>Support (same meaning, even if paraphrased) → <strong>TRUE</strong></li>
-      <li>Contradict (opposite or different value) → <strong>FALSE</strong></li>
-      <li>Silent (partial info, no info, related but not the claim) → <strong>NOT GIVEN</strong></li>
-    </ul>
-  </li>
-  <li>Warning: if the passage states X but the question says "always X" or "all X" — and the passage said "some" or "often" — that's <strong>FALSE</strong>, not NG. Quantifier mismatch = contradiction.</li>
-</ol>
+        <div class="lesson" data-title="Question types — order &amp; tactic" data-time="4 min">
+          <p>Don't do questions top-to-bottom. Do them in the smart order, because each type needs a different move:</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Type</th><th>When to do it</th><th>Tactic</th></tr></thead>
+            <tbody>
+              <tr><td>Matching Headings</td><td><strong>First</strong> (if present)</td><td>Get paragraph gist before micro-questions spoil your fresh read.</td></tr>
+              <tr><td>True / False / Not Given</td><td>After headings</td><td>Find the sentence, then judge (see next lesson).</td></tr>
+              <tr><td>Yes / No / Not Given</td><td>Same</td><td>Same logic, but about the writer's <em>opinion</em>, not facts.</td></tr>
+              <tr><td>Sentence / summary completion</td><td>Middle</td><td>Predict word class. Answer is usually word-for-word from the text.</td></tr>
+              <tr><td>Multiple choice</td><td>Middle</td><td>Eliminate 2 wrong options first. Trap = a true statement that doesn't answer the question.</td></tr>
+              <tr><td>Matching information to paragraphs</td><td><strong>Last</strong> (slow)</td><td>Scan for unique nouns/names. These take the most time.</td></tr>
+            </tbody>
+          </table></div>
+        </div>
+
+        <div class="lesson" data-title="True / False / Not Given — the decision tree" data-time="3 min">
+          <p>This type sinks more scores than any other. Use the same 3-way test every time:</p>
+          <div class="step"><strong>1. Find</strong> the sentence(s) about the question's topic.</div>
+          <div class="step"><strong>2. Compare</strong> the claim in the question to what the passage says.</div>
+          <div class="step"><strong>3. Decide:</strong> does the passage <strong>support</strong> it (→ TRUE), <strong>contradict</strong> it (→ FALSE), or <strong>stay silent</strong> (→ NOT GIVEN)?</div>
+          <div class="warn"><strong>Quantifier trap:</strong> if the question says "<em>all</em>/<em>always</em> X" but the passage says "<em>some</em>/<em>often</em> X", that's a contradiction → <strong>FALSE</strong>, not Not Given.</div>
+          <div class="quiz">
+            <p class="q">Passage: "The library opens at 9am on weekdays." Statement: "The library is open every day of the week." → ?</p>
+            <div class="opts">
+              <button class="opt">True</button>
+              <button class="opt">False</button>
+              <button class="opt" data-correct="true">Not Given</button>
+            </div>
+            <div class="explain">The passage only mentions weekdays. It says <em>nothing</em> about weekends — so we can't confirm or deny "every day". Silence = Not Given. (If it had said "closed at weekends", that would be False.)</div>
+          </div>
+        </div>
+
+        <div class="lesson" data-title="Matching Headings — the exception" data-time="3 min">
+          <p>For headings, "read the questions first" actually backfires — the heading list primes you toward the wrong fit. Do the opposite:</p>
+          <div class="step"><strong>1.</strong> Cover the heading list with your hand.</div>
+          <div class="step"><strong>2.</strong> Skim paragraph A — first two sentences + the last sentence. Jot its gist in 3–5 words in the margin.</div>
+          <div class="step"><strong>3.</strong> Repeat for B, C, D…</div>
+          <div class="step"><strong>4.</strong> <em>Now</em> reveal the headings and match them to your own margin notes. Eliminate as you go.</div>
+          <div class="myth"><strong>Myth:</strong> a heading that repeats a word from the paragraph is the answer. <strong>Truth:</strong> that's often the trap. Match the paragraph's <em>main point</em>, not a shared keyword.</div>
+        </div>
+
+        <div class="lesson" data-title="Pacing &amp; vocabulary" data-time="3 min">
+          <p>Build technique first, then speed. A rough ramp over your prep:</p>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Stage</th><th>Focus</th></tr></thead>
+            <tbody>
+              <tr><td>Early weeks</td><td>Accuracy over speed. Take the time you need; get the method right.</td></tr>
+              <tr><td>Middle weeks</td><td>Tighten timing per passage. Push accuracy past 90%.</td></tr>
+              <tr><td>Final weeks</td><td>Full 60-min tests under real conditions, answering on the sheet as you go.</td></tr>
+            </tbody>
+          </table></div>
+          <div class="myth"><strong>Myth:</strong> "spend 20 minutes per passage, always." <span data-track="general">In General, the last section is hardest and deserves more time.</span><span data-track="academic">In Academic they're equal, so bank time on the easiest one for the hardest.</span></div>
+          <p><strong>Vocabulary:</strong> the Academic Word List (~570 word families) covers a big chunk of exam texts. Drill it plus topic clusters in the <a href="lexis-bank.html">Lexis Bank</a> and <a href="flashcards.html">Flashcards</a>.</p>
+        </div>
+
+        <div class="lesson" data-title="Your daily routine + traps" data-time="3 min">
+          <div class="step"><strong>1.</strong> One passage from Cambridge IELTS 17–19 (or <a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests" target="_blank" rel="noopener">British Council free tests</a>).</div>
+          <div class="step"><strong>2.</strong> Look at the question types <em>first</em> and choose your order (headings → TFNG → completion → matching info).</div>
+          <div class="step"><strong>3.</strong> Timer on. Read with purpose — passive reading wastes minutes.</div>
+          <div class="step"><strong>4.</strong> Log every wrong answer in the <a href="error-log.html">Error Log</a> with a reason (paraphrase missed / NG-vs-F / quantifier slip / outside knowledge / time pressure).</div>
+          <div class="step"><strong>5.</strong> Add 5 unknown words to <a href="flashcards.html">Flashcards</a> with the sentence they appeared in.</div>
+          <div class="warn"><strong>Band-droppers:</strong> treating "Not Given" and "False" as the same · using outside knowledge · overspending on the easy section · not writing answers as you go.</div>
+          <div class="drill"><strong>Do this now:</strong> start a <a href="timer.html">25-min block</a> and do one passage the smart-order way. Log at least one error with its reason.</div>
+        </div>
+
+      </div>
+
+      <div class="pagenav"><a href="listening.html">← Listening</a><a href="writing.html">Next: Writing →</a></div>
+
+    </div></main>
+  </div>
 </div>
-
-<h2>Matching Headings — opposite advice to the rest of the test</h2>
-<p>For headings, "questions first" fails. You need passage gist <em>before</em> reading headings, otherwise the headings prime you toward the wrong fit.</p>
-<ol>
-  <li>Cover the heading list with your hand.</li>
-  <li>Skim paragraph A: read first 2 sentences + last sentence. Note its gist in 3–5 words in the margin.</li>
-  <li>Repeat for B, C, D…</li>
-  <li>NOW reveal the headings. Match your margin notes to the headings. Eliminate as you go.</li>
-</ol>
-
-<h2>Speed drills (after technique is solid)</h2>
-<table>
-  <thead><tr><th>Stage</th><th>Time per passage</th><th>Goal</th></tr></thead>
-  <tbody>
-    <tr><td>Weeks 3–4</td><td>S1: 15 min · S2: 18 min · S3: 22 min</td><td>Build technique, accuracy &gt; speed</td></tr>
-    <tr><td>Weeks 5–6</td><td>S1: 12 min · S2: 16 min · S3: 22 min</td><td>Move accuracy threshold to 90%+</td></tr>
-    <tr><td>Weeks 7–8</td><td>Full 60-min test</td><td>Test conditions, transfer as you go</td></tr>
-  </tbody>
-</table>
-<div class="myth"><strong>Myth:</strong> "Read every passage in 10 min." Section 3 alone deserves &gt;20 min. Equal-time pacing tanks the highest-value questions.</div>
-
-<h2>Vocabulary: build the AWL core + topic clusters</h2>
-<p>Academic Word List (Coxhead 570 word families) covers ~10% of academic reading. Drill these in Anki. See <a href="lexis-bank.html">lexis bank</a> for AWL + 10 topic clusters (env, tech, education, health, urban, work, family, media, crime, globalisation).</p>
-
-<h2>Daily routine (15 min weekday / 90 min weekend)</h2>
-<div class="step"><strong>Step 1:</strong> One passage from Cambridge IELTS 17–19. Pick a difficulty matching your week (S1 early, S3 later).</div>
-<div class="step"><strong>Step 2:</strong> Look at question types FIRST. Decide order (headings → T/F/NG → completion → matching info).</div>
-<div class="step"><strong>Step 3:</strong> Timer on. Read with purpose — passive reading = wasted time.</div>
-<div class="step"><strong>Step 4:</strong> Mark every wrong answer with category in <a href="error-log.html">error log</a>: paraphrase missed / NG vs F confusion / quantifier slip / out-of-context inference / time pressure.</div>
-<div class="step"><strong>Step 5:</strong> Add 5 unknown words to Anki with passage sentence as context.</div>
-
-<h2>Common mistakes</h2>
-<ul>
-  <li>Treating "Not Given" and "False" as interchangeable.</li>
-  <li>Using outside knowledge (e.g. "I know polar bears are endangered" — passage doesn't say so → NG).</li>
-  <li>Spending 25 min on S1 because it feels safe → no time for S3.</li>
-  <li>Reading passage fully before checking questions (works for one-off study, kills test-day speed).</li>
-  <li>Not transferring as you go.</li>
-</ul>
-
-<h2>Academic Reading note</h2>
-<p>If you booked Academic: passages are 700–900 words each, equal difficulty. Drop the "easy → hard" pacing — split 20-20-20 with 5 min for transfer. Same question types as GT. AWL is more critical.</p>
-
-<h2>Free practice resources</h2>
-<ul>
-  <li>Cambridge IELTS 17–19 — primary source.</li>
-  <li><a href="https://takeielts.britishcouncil.org/take-ielts/prepare/free-ielts-practice-tests" target="_blank">British Council free tests</a></li>
-  <li><a href="https://www.ielts.org/about-ielts/ielts-sample-test-questions" target="_blank">IELTS.org official samples</a></li>
-  <li><a href="https://ieltsliz.com/ielts-reading" target="_blank">IELTS Liz — Reading tips</a></li>
-  <li><a href="https://www.youtube.com/@E2IELTS" target="_blank">E2 IELTS — Reading strategies</a></li>
-</ul>
-
-<div class="nav">
-  <a href="listening.html">← Listening</a>
-  <a href="writing.html">Next: Writing →</a>
-</div>
-
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Plan — BandUp</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
+
+      <span class="eyebrow">🗓️ Study Plan</span>
+      <h1>Your 8-week rotation</h1>
+      <p class="lead">You don't have to hold any of this in your head — check tasks off as you go and the dashboard tracks the rest. Short on time? Spread a "week" across ten days. Consistency beats speed.</p>
+
+      <div class="card">
+        <div class="side-progress" style="border:0;background:transparent;padding:0">
+          <div class="row" style="margin-bottom:.4rem"><strong>Overall progress</strong><span id="pctLabel">0%</span></div>
+          <div class="progress"><span id="overallBar" style="width:0%"></span></div>
+          <div class="row" style="margin-top:.4rem"><span id="doneLabel">0 of 0 tasks done</span></div>
+        </div>
+      </div>
+
+      <h2>The daily rhythm (repeats every week)</h2>
+      <p class="muted">Interleaving — touching every skill across the week — is what makes it stick.<sup class="cite"><a href="sources.html#r3">3</a></sup></p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Day</th><th>Main (≈45 min)</th><th>Micro-drill (≈15 min)</th><th>+5 min</th></tr></thead>
+        <tbody>
+          <tr><td>Mon</td><td>Listening section + log errors</td><td>Writing — 1 paragraph by hand</td><td>Flashcards</td></tr>
+          <tr><td>Tue</td><td>Reading passage timed + log errors</td><td>Speaking — 1 cue card recorded</td><td>Flashcards</td></tr>
+          <tr><td>Wed</td><td>Writing — full task or 2 body paras</td><td>Listening — 5-min shadowing</td><td>Flashcards</td></tr>
+          <tr><td>Thu</td><td>Speaking — record P1+P3 drill</td><td>Reading — 1 paraphrase set</td><td>Flashcards</td></tr>
+          <tr><td>Fri</td><td>Error-log review + re-attempt misses</td><td>New collocations → Flashcards</td><td>Flashcards</td></tr>
+          <tr><td>Sat</td><td colspan="2"><strong>Full mock — one skill, rotating each week</strong></td><td>—</td></tr>
+          <tr><td>Sun</td><td colspan="2"><strong>Reflect · plan next week · feedback round</strong></td><td>—</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2>Week by week</h2>
+      <p class="muted">Tap a week to expand. Check off tasks as you finish them.</p>
+      <div id="weeks"></div>
+
+      <details class="week"><summary>🚫 Anti-patterns — look productive, aren't <span class="chev">›</span></summary><div class="week-body">
+        <ul>
+          <li>Watching strategy videos back-to-back instead of practising.</li>
+          <li>Re-reading notes (feels good, barely helps — <a href="sources.html#r1">test yourself instead</a>).</li>
+          <li>Only doing Listening + Reading because they're easy to self-grade.</li>
+          <li>Writing essays you never submit for <a href="feedback.html">feedback</a>.</li>
+          <li>Memorising "advanced" words with no collocations.</li>
+          <li>Skipping the <a href="error-log.html">error log</a> because "I'll remember."</li>
+        </ul>
+      </div></details>
+
+      <div class="warn"><strong>Reschedule rule:</strong> if a late mock still misses your target by more than 0.5 in any skill, move the test date. A few more weeks of focused prep is far cheaper than a retake.</div>
+
+      <div class="pagenav"><a href="index.html">← Home</a><a href="timer.html">Focus Timer →</a></div>
+
+    </div></main>
+  </div>
+</div>
+<script src="app.js"></script>
+<script>
+(function(){
+  var S = IELTS.state();
+  if(!S.tasksDone) S.tasksDone = {};
+
+  var WEEKS = [
+    { t:"Week 1 — Diagnostic &amp; the rubric", m:"Baseline known, effort weighted.", tasks:[
+      "Read the Band Descriptors end to end; highlight the Band-7 rows",
+      "One full Listening section + log errors",
+      "One Reading section + log errors",
+      "Write one Task 1 (letter or report), 20 min, by hand",
+      "Record Speaking Part 1 + Part 2, listen back",
+      "Sat: full mock (L + R + W back-to-back, timed)",
+      "Sun: score it, record scores in Diagnostic, get one essay checked"
+    ]},
+    { t:"Week 2 — Build technique", m:"Comfortable with 4 question types in L &amp; R.", tasks:[
+      "Listening Sections 1–2; note your top 2 error categories",
+      "Reading — one passage, focus on Matching Headings",
+      "Write one Task 2 essay (40 min); run it through an AI grader",
+      "Speaking — one narrative cue card (STAR-R): record, replay, re-record",
+      "Review error log; re-attempt your 3 worst items",
+      "Sat: full Listening mock + analysis",
+      "Sun: build Lexis cluster 1 (Environment) → Flashcards"
+    ]},
+    { t:"Week 3 — Accuracy, then speed", m:"Listening weak section 35+/40; reading pacing on track.", tasks:[
+      "Listening S3–S4 with accent variety (BBC + ABC AU)",
+      "Reading — two passages back-to-back, tighter timing",
+      "Write one Task 1 (new tone) + one Task 2 body paragraph",
+      "Speaking Part 3 — record three 90-sec answers",
+      "Error-log review",
+      "Sat: full Reading mock + analysis",
+      "Sun: Lexis cluster 2 (Technology) → Flashcards"
+    ]},
+    { t:"Week 4 — Mid-point re-check", m:"Re-diagnosis done; decide pace.", tasks:[
+      "Listening — timed full section on your weakest accents",
+      "Reading — one passage focused on True/False/Not Given",
+      "Write one Task 2 (different question type from Week 2)",
+      "Speaking — full Part 2 + Part 3 follow-ups",
+      "Error-log review + Lexis cluster 3 (Education)",
+      "Sat: full mock, all four skills",
+      "Sun: re-record scores in Diagnostic; get one essay checked; adjust focus"
+    ]},
+    { t:"Week 5 — Speed &amp; vocabulary", m:"Reading 36+/40; clear position in essays.", tasks:[
+      "Listening Section 4 ×2 (the band-killer)",
+      "Reading — one passage at a tighter limit",
+      "Rewrite your weakest earlier essay with the feedback applied",
+      "Speaking — two cue cards; book a session with me if you can",
+      "Error log + Lexis clusters 4 &amp; 5 (Health, Work)",
+      "Sat: full Writing mock (T1 + T2 by hand, 60 min)",
+      "Sun: self-mark Writing vs descriptors + AI grade; compare"
+    ]},
+    { t:"Week 6 — Depth &amp; fluency", m:"Speaking: clear stance + reflection added.", tasks:[
+      "Listening — full section, aim 9/10",
+      "Reading — full mock under pressure",
+      "Write Task 1 + Task 2 in 60 min, real conditions",
+      "Speaking — full 3-part mock recorded",
+      "Lexis clusters 6 &amp; 7 (Hometown, Family)",
+      "Sat: full Speaking mock — book a live session with me",
+      "Sun: get one essay checked; apply earlier fixes"
+    ]},
+    { t:"Week 7 — Final check", m:"Consistent across all four; decision booked.", tasks:[
+      "Listening — drill your weakest section type",
+      "Reading — drill your weakest question type",
+      "Write one full task pair under exam timing",
+      "Speaking — full mock + self-assessment",
+      "Error-log full review + Lexis clusters 8–10 (Media, Crime, Hobbies)",
+      "Sat: full all-four-skills mock, real conditions",
+      "Sun: final feedback round — DECISION: any skill 0.5+ below target → reschedule"
+    ]},
+    { t:"Week 8 — Taper, don't cram", m:"Arrive rested and ready.", tasks:[
+      "Mon–Tue: 30 min light Listening / Reading review",
+      "Wed: reread your best essay + top error-log items",
+      "Thu: 10-min Speaking warm-up (light conversation)",
+      "Fri: logistics check — passport, route, sleep. No new material",
+      "Sat: light vocab only; sleep early",
+      "Test day: eat well, arrive early, breathe"
+    ]}
+  ];
+
+  var totalTasks = WEEKS.reduce(function(a,w){return a+w.tasks.length;},0);
+
+  function render(){
+    var host=document.getElementById("weeks");
+    host.innerHTML = WEEKS.map(function(w,wi){
+      var body = w.tasks.map(function(t,ti){
+        var id="w"+(wi+1)+"-"+ti;
+        var done=!!S.tasksDone[id];
+        return '<li class="task-item'+(done?' done':'')+'"><input type="checkbox" data-task="'+id+'" '+(done?'checked':'')+' id="'+id+'"><label for="'+id+'">'+t+'</label></li>';
+      }).join("");
+      var dc = w.tasks.filter(function(t,ti){return S.tasksDone["w"+(wi+1)+"-"+ti];}).length;
+      return '<details class="week"><summary>'+w.t+' <span class="badge-time" style="margin-left:.4rem">'+dc+'/'+w.tasks.length+'</span><span class="chev">›</span></summary>'+
+             '<div class="week-body"><ul class="tasklist">'+body+'</ul>'+
+             '<div class="milestone">🎯 Milestone: '+w.m+'</div></div></details>';
+    }).join("");
+    wire(); updateOverall();
+  }
+  function wire(){
+    document.querySelectorAll('input[data-task]').forEach(function(cb){
+      cb.addEventListener("change", function(){
+        var id=cb.getAttribute("data-task");
+        if(cb.checked){ S.tasksDone[id]=true; IELTS.touchStreak(); IELTS.toast("✓ Checked off — nice"); }
+        else { delete S.tasksDone[id]; }
+        IELTS.save();
+        cb.closest(".task-item").classList.toggle("done", cb.checked);
+        // update just this week's badge + the overall bar (keep accordion open)
+        var det = cb.closest("details");
+        var boxes = det.querySelectorAll('input[data-task]');
+        var dc = det.querySelectorAll('input[data-task]:checked').length;
+        det.querySelector("summary .badge-time").textContent = dc+"/"+boxes.length;
+        updateOverall();
+      });
+    });
+  }
+  function updateOverall(){
+    var done=Object.keys(S.tasksDone).filter(function(k){return S.tasksDone[k];}).length;
+    var pct=Math.round(done/totalTasks*100);
+    document.getElementById("overallBar").style.width=pct+"%";
+    document.getElementById("pctLabel").textContent=pct+"%";
+    document.getElementById("doneLabel").textContent=done+" of "+totalTasks+" tasks done";
+  }
+  render();
+})();
+</script>
+</body>
+</html>

@@ -3,109 +3,174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Error Log — taxonomy + template</title>
+<title>Error Log — BandUp</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="app">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim" id="scrim"></div>
+  <div>
+    <header class="appbar" id="appbar"></header>
+    <main class="main"><div class="main-inner">
 
-<nav class="topnav">
-  <a href="index.html">← Home</a>
-  <a href="diagnostic.html">Diagnostic</a>
-  <a href="band-descriptors.html">Descriptors</a>
-  <a href="lexis-bank.html">Lexis</a>
-</nav>
+      <span class="eyebrow">📋 Error Log</span>
+      <h1>Your mistakes are the syllabus</h1>
+      <p class="lead">The single biggest lever in this guide. Log every wrong answer with a <em>reason</em>. The tool then shows your top patterns — those become next week's drills. Saved on this device.<sup class="cite"><a href="sources.html#r1">1</a></sup></p>
 
-<h1>Error Log — the single biggest lever in this guide</h1>
-<div class="target">Every wrong answer gets a row. Each row has a <em>reason category</em>. Categories drive next week's drills. Without this, you re-make the same mistake for 8 weeks.</div>
+      <div class="card">
+        <h3 class="mt0">➕ Log an error</h3>
+        <div class="field-row">
+          <div><label class="field" for="skill">Skill</label>
+            <select id="skill">
+              <option value="listening">🎧 Listening</option>
+              <option value="reading">📖 Reading</option>
+              <option value="writing">✍️ Writing</option>
+              <option value="speaking">🗣️ Speaking</option>
+            </select>
+          </div>
+          <div><label class="field" for="reason">Reason (why you got it wrong)</label>
+            <select id="reason"></select>
+          </div>
+        </div>
+        <label class="field" for="source">Source / question <span class="muted">(optional)</span></label>
+        <input id="source" placeholder="e.g. Cambridge 18, Test 1, Reading Q14">
+        <div class="field-row">
+          <div><label class="field" for="mine">Your answer</label><input id="mine" placeholder="False"></div>
+          <div><label class="field" for="correct">Correct answer</label><input id="correct" placeholder="Not Given"></div>
+        </div>
+        <label class="field" for="action">Fix / action <span class="muted">(auto-filled from the reason — edit freely)</span></label>
+        <input id="action" placeholder="Re-read the True/False/Not Given decision tree">
+        <div class="btn-row"><button class="btn primary" id="addBtn">Add to log</button></div>
+      </div>
 
-<h2>Why this works (learning science in one paragraph)</h2>
-<p>Retrieval practice + error analysis + spaced re-attempt is the most studied "what works in studying" trio (Roediger, Karpicke, Bjork). The act of writing <em>why</em> you got it wrong, naming the category, and re-attempting after 48 hours moves the correction into long-term memory far better than re-reading.</p>
+      <div id="insight"></div>
 
-<h2>Template (copy into a notebook or Google Sheet)</h2>
-<table>
-  <thead><tr><th>Date</th><th>Skill</th><th>Source</th><th>Q#</th><th>My answer</th><th>Correct</th><th>Reason category</th><th>Action</th><th>Re-attempt 48 hr</th></tr></thead>
-  <tbody>
-    <tr><td>2026-05-22</td><td>R</td><td>Cam 18, T1, P3, Q14</td><td>14</td><td>False</td><td>Not Given</td><td>NG vs F (no contradiction, just silent)</td><td>Re-read NG decision tree</td><td>✓ 2026-05-24, correct</td></tr>
-    <tr><td>2026-05-22</td><td>L</td><td>Cam 18, T1, S4, Q35</td><td>35</td><td>technologies</td><td>technology</td><td>Plural error</td><td>Spell-drill plural cues (/s/, /z/, no marker)</td><td>—</td></tr>
-  </tbody>
-</table>
+      <div class="btn-row" style="justify-content:space-between">
+        <h2 style="margin:0">Your log (<span id="count">0</span>)</h2>
+        <select id="filter" style="width:auto"><option value="">All skills</option><option value="listening">Listening</option><option value="reading">Reading</option><option value="writing">Writing</option><option value="speaking">Speaking</option></select>
+      </div>
+      <div id="list"></div>
 
-<h2>Reason categories by skill</h2>
+      <details class="week"><summary>📖 What the reason categories mean (drill guide) <span class="chev">›</span></summary><div class="week-body">
+        <p class="muted">Each reason links to a specific fix. When a reason keeps recurring, that's exactly what to practise.</p>
+        <p><strong>Listening:</strong> misheard → accent + shadowing · spelling → dictation drills · plural/form → listen for the /s/ · wrong word class → predict part of speech · distractor → wait for confirmation · out-of-order → read the rubric · word-limit → highlight the limit · lost place → "abandon &amp; move on".</p>
+        <p><strong>Reading:</strong> paraphrase missed → paraphrase drill · NG-vs-False → the decision tree · quantifier slip → highlight all/most/some · outside knowledge → finger on the evidence · time pressure → pacing · wrong tactic → the type table.</p>
+        <p><strong>Writing:</strong> task not fully answered · no clear position · idea not extended · mechanical connectors · weak topic sentence · basic word repeated · wrong collocation · inappropriate "advanced" word · same structure repeated · error in complex sentence · wrong article/tense/agreement · under/over length.</p>
+        <p><strong>Speaking:</strong> hesitation for language · fillers · basic word repeated · wrong collocation · broken sentence · all-simple sentences · monotone / no stress · sound blocked the listener · missed a cue-card bullet · one-word Part 1 answer.</p>
+      </div></details>
 
-<h3>Listening</h3>
-<ul>
-  <li><strong>Mishearing</strong> — wrong word due to accent or speed. <em>Drill:</em> accent variety + shadowing.</li>
-  <li><strong>Spelling</strong> — heard correctly, wrote it wrong. <em>Drill:</em> dictation 5 min/day, common-misspell list.</li>
-  <li><strong>Plural / form</strong> — heard "books" wrote "book" or vice versa. <em>Drill:</em> plural-marker listening drills.</li>
-  <li><strong>Word class</strong> — gap needed noun, wrote verb. <em>Drill:</em> pre-listen prediction of part of speech.</li>
-  <li><strong>Distractor</strong> — picked the first-mentioned option in MCQ. <em>Drill:</em> "wait for confirmation" practice.</li>
-  <li><strong>Out-of-order</strong> — assumed linear order in a matching task. <em>Drill:</em> rubric-reading discipline.</li>
-  <li><strong>Word-limit violation</strong> — wrote 3 words when max was 2. <em>Drill:</em> highlight word limit every time.</li>
-  <li><strong>Lost place</strong> — froze on Q5, missed Q6+Q7. <em>Drill:</em> "abandon and move" drills.</li>
-</ul>
+      <div class="callout"><strong>Weekly review (30 min, once a week):</strong> read the week's rows, look at your top-2 pattern above, and put 60% of next week's practice there. Re-attempt anything you haven't marked "fixed". If a reason recurs for 3 weeks, the method is off — bring it to a session or get <a href="feedback.html">feedback</a>.</div>
 
-<h3>Reading</h3>
-<ul>
-  <li><strong>Paraphrase missed</strong> — didn't see the synonym. <em>Drill:</em> daily paraphrase pairs from <a href="lexis-bank.html">lexis bank</a>.</li>
-  <li><strong>NG vs F</strong> — confused silence for contradiction (or vice versa). <em>Drill:</em> re-read NG decision tree on <a href="reading.html">reading page</a>.</li>
-  <li><strong>Quantifier slip</strong> — "all" in question vs "most" in passage. <em>Drill:</em> highlight quantifiers (all, most, some, often, rarely, never).</li>
-  <li><strong>Outside knowledge</strong> — answered from what you know, not the text. <em>Drill:</em> finger-on-evidence rule.</li>
-  <li><strong>Time pressure</strong> — guessed in last 5 min. <em>Drill:</em> pacing per section.</li>
-  <li><strong>Wrong question type tactic</strong> — used "questions first" on Matching Headings. <em>Drill:</em> tactic table per type.</li>
-  <li><strong>Grammar fit</strong> — answer didn't fit grammatically. <em>Drill:</em> word-class prediction before reading.</li>
-</ul>
+      <div class="pagenav"><a href="index.html">← Home</a><a href="flashcards.html">Flashcards →</a></div>
 
-<h3>Writing</h3>
-<ul>
-  <li><strong>TR — bullet missed</strong> (T1) or question part missed (T2).</li>
-  <li><strong>TR — no clear position.</strong></li>
-  <li><strong>TR — ideas stated but not extended.</strong></li>
-  <li><strong>CC — mechanical connectors.</strong></li>
-  <li><strong>CC — paragraph without clear topic sentence.</strong></li>
-  <li><strong>LR — repetition of basic word.</strong></li>
-  <li><strong>LR — wrong collocation.</strong></li>
-  <li><strong>LR — inappropriate "advanced" word.</strong></li>
-  <li><strong>GRA — same simple structure repeated.</strong></li>
-  <li><strong>GRA — error in complex sentence.</strong></li>
-  <li><strong>GRA — article / subject-verb agreement / tense.</strong></li>
-  <li><strong>Length — under/over word count.</strong></li>
-</ul>
-
-<h3>Speaking</h3>
-<ul>
-  <li><strong>FC — long hesitation for content (not language).</strong></li>
-  <li><strong>FC — fillers ("um", "you know", "like").</strong></li>
-  <li><strong>LR — basic word repeated.</strong></li>
-  <li><strong>LR — wrong collocation.</strong></li>
-  <li><strong>GRA — sentence broken mid-clause.</strong></li>
-  <li><strong>GRA — narrow range, all simple sentences.</strong></li>
-  <li><strong>Pron — monotone, no sentence stress.</strong></li>
-  <li><strong>Pron — sound-level errors that blocked the examiner.</strong></li>
-  <li><strong>Strategy — didn't cover all bullets in P2.</strong></li>
-  <li><strong>Strategy — one-word P1 answer.</strong></li>
-</ul>
-
-<h2>Weekly review (Friday or Sunday, 30 min)</h2>
-<ol>
-  <li>Read every row from the week.</li>
-  <li>Count by category. Which 2 categories appear most often?</li>
-  <li>Those 2 are next week's targeted drills. Block 60% of practice time on them.</li>
-  <li>Re-attempt every "—" in the 48hr column. Mark ✓ / ✗.</li>
-  <li>If a category appears 3 weeks running → method is wrong, not effort. Get external feedback.</li>
-</ol>
-
-<h2>Anki integration (vocabulary errors)</h2>
-<p>Every LR error (unknown word + correct collocation + lost paraphrase) becomes an Anki card. Card format:</p>
-<ul>
-  <li><strong>Front:</strong> sentence with the target word blanked.</li>
-  <li><strong>Back:</strong> the word + 1-line definition + the original sentence.</li>
-</ul>
-<p>Review 5 min/day. Don't make new cards faster than you can review.</p>
-
-<div class="nav">
-  <a href="diagnostic.html">← Diagnostic</a>
-  <a href="lexis-bank.html">Next: Lexis Bank →</a>
+    </div></main>
+  </div>
 </div>
+<script src="app.js"></script>
+<script>
+(function(){
+  var S = IELTS.state();
+  if(!Array.isArray(S.errorLog)) S.errorLog = [];
 
+  var REASONS = {
+    listening: ["Misheard (accent/speed)","Spelling","Plural / word form","Wrong word class","Fell for a distractor","Assumed wrong order","Broke the word limit","Lost my place / froze"],
+    reading:   ["Missed the paraphrase","Not Given vs False","Quantifier slip (all/most)","Used outside knowledge","Time pressure","Wrong tactic for type","Answer didn't fit grammatically"],
+    writing:   ["Didn't fully answer the task","No clear position","Idea stated but not extended","Mechanical connectors","Weak/again topic sentence","Basic word repeated","Wrong collocation","Inappropriate 'advanced' word","Same structure repeated","Error in complex sentence","Article / tense / agreement","Under / over length"],
+    speaking:  ["Hesitated for language","Fillers (um/like)","Basic word repeated","Wrong collocation","Sentence broke mid-clause","All simple sentences","Monotone / no stress","Sound blocked the listener","Missed a Part 2 bullet","One-word Part 1 answer"]
+  };
+  var FIX = {
+    "Missed the paraphrase":"Do the paraphrase drill — underline question word + its synonym in the text",
+    "Not Given vs False":"Re-read the True/False/Not Given decision tree",
+    "Quantifier slip (all/most)":"Highlight quantifiers (all/most/some/often) before deciding",
+    "Spelling":"5 min dictation drill; keep a common-misspellings list",
+    "Plural / word form":"Listen for the final /s/ or /z/",
+    "Wrong word class":"Predict each gap's part of speech before listening/reading",
+    "Broke the word limit":"Highlight the word limit every time before writing",
+    "Lost my place / froze":"Practise 'abandon and move on' — drop it, catch the next one",
+    "Mechanical connectors":"Delete half your linkers; connect with reference words instead",
+    "Wrong collocation":"Add the correct collocation to Flashcards",
+    "Monotone / no stress":"Mark stressed words and re-record with stress"
+  };
+
+  var skill=document.getElementById("skill"), reason=document.getElementById("reason"), action=document.getElementById("action");
+  function fillReasons(){
+    var opts = REASONS[skill.value].map(function(r){return '<option>'+r+'</option>';}).join("");
+    reason.innerHTML = opts; syncFix();
+  }
+  function syncFix(){ if(FIX[reason.value] && !action.dataset.touched) action.value = FIX[reason.value]; }
+  skill.addEventListener("change", fillReasons);
+  reason.addEventListener("change", function(){ action.dataset.touched=""; syncFix(); });
+  action.addEventListener("input", function(){ action.dataset.touched="1"; });
+  fillReasons();
+
+  document.getElementById("addBtn").addEventListener("click", function(){
+    var entry = {
+      id: Date.now()+""+Math.floor(Math.random()*99),
+      date: new Date().toISOString().slice(0,10),
+      skill: skill.value, reason: reason.value,
+      source: document.getElementById("source").value.trim(),
+      mine: document.getElementById("mine").value.trim(),
+      correct: document.getElementById("correct").value.trim(),
+      action: action.value.trim(), redo:false
+    };
+    S.errorLog.unshift(entry); IELTS.save(); IELTS.touchStreak();
+    document.getElementById("source").value=""; document.getElementById("mine").value=""; document.getElementById("correct").value="";
+    action.dataset.touched=""; syncFix();
+    IELTS.toast("Logged — that's a win, not a failure ✓");
+    render();
+  });
+
+  var ICON={listening:"🎧",reading:"📖",writing:"✍️",speaking:"🗣️"};
+  var filter=document.getElementById("filter");
+  filter.addEventListener("change", render);
+
+  function render(){
+    var log = S.errorLog;
+    document.getElementById("count").textContent = log.length;
+    // insight: top reasons
+    var box=document.getElementById("insight");
+    if(log.length>=3){
+      var counts={}; log.forEach(function(e){counts[e.reason]=(counts[e.reason]||0)+1;});
+      var top=Object.keys(counts).sort(function(a,b){return counts[b]-counts[a];}).slice(0,2);
+      box.innerHTML='<div class="next-action"><span class="eyebrow">🎯 Drill these next</span><h2 class="mt0">Your top pattern'+(top.length>1?'s':'')+'</h2><p class="mt0">'+
+        top.map(function(r){return '<strong>'+r+'</strong> ('+counts[r]+'×)';}).join(' &nbsp;·&nbsp; ')+
+        '</p><p class="muted mt0">Put most of next week\'s practice here.</p></div>';
+    } else { box.innerHTML=""; }
+
+    var list=document.getElementById("list");
+    var f=filter.value;
+    var shown=log.filter(function(e){return !f || e.skill===f;});
+    if(!shown.length){ list.innerHTML='<div class="card center muted">No entries yet. Log your first error above — it only takes 10 seconds.</div>'; return; }
+    list.innerHTML = shown.map(function(e){
+      return '<div class="card" style="padding:.85rem 1rem" data-id="'+e.id+'">'+
+        '<div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">'+
+          '<span class="pill">'+ICON[e.skill]+' '+e.skill+'</span>'+
+          '<span class="pill amber">'+e.reason+'</span>'+
+          '<span class="badge-time">'+e.date+'</span>'+
+          '<span style="margin-left:auto"></span>'+
+          '<button class="btn ghost redo" style="min-height:34px;padding:.3rem .7rem">'+(e.redo?'✓ fixed':'mark fixed')+'</button>'+
+          '<button class="btn ghost del" style="min-height:34px;padding:.3rem .6rem" aria-label="Delete">🗑</button>'+
+        '</div>'+
+        (e.source?'<div class="muted" style="font-size:.86rem;margin-top:.3rem">'+esc(e.source)+'</div>':'')+
+        ((e.mine||e.correct)?'<div style="font-size:.9rem;margin-top:.3rem">You: <strong style="color:var(--red)">'+esc(e.mine||'—')+'</strong> → Correct: <strong style="color:var(--green-dark)">'+esc(e.correct||'—')+'</strong></div>':'')+
+        (e.action?'<div style="font-size:.9rem;margin-top:.3rem">🛠 '+esc(e.action)+'</div>':'')+
+      '</div>';
+    }).join("");
+
+    list.querySelectorAll(".card").forEach(function(card){
+      var id=card.dataset.id;
+      card.querySelector(".del").addEventListener("click", function(){
+        S.errorLog = S.errorLog.filter(function(x){return x.id!==id;}); IELTS.save(); render();
+      });
+      card.querySelector(".redo").addEventListener("click", function(){
+        var e=S.errorLog.find(function(x){return x.id===id;}); if(e){ e.redo=!e.redo; IELTS.save(); render(); }
+      });
+    });
+  }
+  function esc(s){ return (s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+  render();
+})();
+</script>
 </body>
 </html>

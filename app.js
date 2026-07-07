@@ -53,6 +53,7 @@
     tasksDone: {},          // { "w1-mon-1": true }
     errorLog: [],           // [{id,date,skill,source,q,mine,correct,reason,action,redo}]
     flash: {},              // { term: {box:1, due:ts, def:"", ex:""} }
+    own: {},                // { "yt-id": "learner's own example text" }
     streak: { count: 0, last: null },
     timerSessions: 0
   };
@@ -62,7 +63,7 @@
     try { state = Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || "{}")); }
     catch (e) { state = Object.assign({}, defaults); }
     // ensure nested objects exist
-    ["diagnostic","lessonsDone","stepTotals","tasksDone","flash"].forEach(function(k){
+    ["diagnostic","lessonsDone","stepTotals","tasksDone","flash","own"].forEach(function(k){
       if (!state[k] || typeof state[k] !== "object") state[k] = {};
     });
     if (!Array.isArray(state.errorLog)) state.errorLog = [];
@@ -244,8 +245,10 @@
         card.appendChild(meta);
         var body = el("div"); body.innerHTML = lesson.innerHTML; card.appendChild(body);
         stage.appendChild(card);
-        // re-init quizzes inside this card
+        // re-init interactive widgets inside this card
         initQuizzes(card);
+        initRecall(card);
+        initYourTurn(card);
         // progress
         var doneCount = vis.filter(function (l) { return state.lessonsDone[l.getAttribute("data-lid")]; }).length;
         $(".progress > span", head).style.width = Math.round(doneCount / vis.length * 100) + "%";
@@ -315,6 +318,85 @@
     });
   }
 
+  /* ---- Recall blocks (learn-cycle step ① — active recall) --------------- */
+  // Markup: <div class="recall">
+  //   <div class="ritem"><span class="cue">prompt</span><span class="ans">answer</span></div> ...
+  // </div>
+  function initRecall(root) {
+    $all(".recall", root).forEach(function (r) {
+      if (r.getAttribute("data-init")) return;
+      r.setAttribute("data-init", "1");
+      var head = el("div", "phase-head",
+        '<span class="phase p1">① Memorise</span>' +
+        '<span class="phase-hint">Say the answer out loud first — then tap to check.</span>');
+      r.insertBefore(head, r.firstChild);
+      $all(".ritem", r).forEach(function (it) {
+        if (!$(".ans", it)) return;
+        it.setAttribute("tabindex", "0");
+        it.setAttribute("role", "button");
+        function flip() {
+          it.classList.toggle("open");
+          if (it.classList.contains("open")) touchStreak();
+        }
+        it.addEventListener("click", flip);
+        it.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); }
+        });
+      });
+    });
+  }
+
+  /* ---- "Make it yours" boxes (learn-cycle step ③ — generation) ---------- */
+  // Markup: <div class="your-turn" data-id="unique-id" data-ph="placeholder">
+  //   <p class="prompt">instruction</p>
+  //   <div class="sample">sample answer (optional)</div>
+  // </div>
+  function initYourTurn(root) {
+    $all(".your-turn", root).forEach(function (yt) {
+      if (yt.getAttribute("data-init")) return;
+      yt.setAttribute("data-init", "1");
+      var id = yt.getAttribute("data-id");
+      if (!id) return;
+      var saved = state.own[id] || "";
+      var head = el("div", "phase-head",
+        '<span class="phase p3">③ Make it yours</span>' +
+        (saved ? '<span class="pill green">✓ saved</span>' : ""));
+      yt.insertBefore(head, yt.firstChild);
+      var sample = $(".sample", yt);
+      if (sample) {
+        sample.style.display = "none";
+        sample.insertBefore(el("div", "sample-head",
+          "One possible version — yours doesn't need to match, it needs to be yours:"), sample.firstChild);
+      }
+      var ta = el("textarea", "own-input");
+      ta.placeholder = yt.getAttribute("data-ph") || "Type your own example here…";
+      ta.value = saved;
+      var row = el("div", "btn-row");
+      var saveBtn = el("button", "btn primary", "Save my example");
+      row.appendChild(saveBtn);
+      var toggle = null;
+      if (sample) {
+        toggle = el("button", "btn ghost", "Compare with a sample");
+        row.appendChild(toggle);
+      }
+      yt.appendChild(ta);
+      yt.appendChild(row);
+      if (sample) yt.appendChild(sample);
+      saveBtn.addEventListener("click", function () {
+        var v = ta.value.trim();
+        if (!v) { toast("Write something first — even one line counts."); ta.focus(); return; }
+        state.own[id] = v; save(); touchStreak();
+        if (!$(".pill", head)) head.appendChild(el("span", "pill green", "✓ saved"));
+        toast("Saved — your own example sticks better than any template ✓");
+      });
+      if (toggle) toggle.addEventListener("click", function () {
+        var show = sample.style.display === "none";
+        sample.style.display = show ? "" : "none";
+        toggle.textContent = show ? "Hide sample" : "Compare with a sample";
+      });
+    });
+  }
+
   /* ---- Public API ------------------------------------------------------ */
   window.IELTS = {
     state: function () { return state; },
@@ -350,6 +432,8 @@
     applyTrack();
     initSteppers();
     initQuizzes(document);
+    initRecall(document);
+    initYourTurn(document);
     renderDisclaimer();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);

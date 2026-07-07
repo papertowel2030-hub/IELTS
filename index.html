@@ -167,6 +167,7 @@
 
       '<h2>Your four skills</h2>' +
       '<div class="skill-grid" id="dash-skills"></div>' +
+      '<p class="muted" style="font-size:.82rem">"Now" levels are the estimates <em>you</em> entered at setup — not measured scores. Replace them with real mock results in the <a href="diagnostic.html">Diagnostic</a>.</p>' +
 
       '<h2>Jump to a tool</h2>' +
       '<div class="skill-grid">' +
@@ -177,7 +178,8 @@
       '</div>' +
 
       '<div class="pagenav"><a href="foundations.html">🧭 Start with Foundations</a>' +
-      '<a href="#" id="redo">Redo setup</a></div>';
+      '<a href="#" id="redo">Redo setup</a>' +
+      '<a href="#" id="wipe">Reset all data</a></div>';
 
     root.innerHTML = html;
 
@@ -199,6 +201,10 @@
     root.querySelector("#redo").addEventListener("click", function (e) {
       e.preventDefault();
       if (confirm("Restart setup? Your lessons/progress stay saved — only test type, target and starting levels reset.")) onboarding();
+    });
+    root.querySelector("#wipe").addEventListener("click", function (e) {
+      e.preventDefault();
+      if (confirm("Erase everything saved on this device — progress, streak, error log, flashcards, your examples? This can't be undone.")) IELTS.reset();
     });
   }
 

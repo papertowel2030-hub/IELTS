@@ -278,8 +278,8 @@
         if (!state.lessonsDone[lid]) {
           state.lessonsDone[lid] = true; save(); touchStreak();
           var pr = skillProgress(skill);
-          if (pr.total && pr.done >= pr.total) toast("🎉 " + skill.charAt(0).toUpperCase() + skill.slice(1) + " module complete!");
-          else toast("Nice — lesson done ✓");
+          if (pr.total && pr.done >= pr.total) toast("🎉 " + skill.charAt(0).toUpperCase() + skill.slice(1) + " mastered — module complete");
+          else toast("Done ✓");
         }
         if (pos < vis.length - 1) { pos++; render(); window.scrollTo({ top: 0, behavior: "smooth" }); }
         else { render(); }
@@ -318,7 +318,7 @@
     });
   }
 
-  /* ---- Recall blocks (learn-cycle step ① — active recall) --------------- */
+  /* ---- Recall blocks (learn cycle: Recall — active recall) -------------- */
   // Markup: <div class="recall">
   //   <div class="ritem"><span class="cue">prompt</span><span class="ans">answer</span></div> ...
   // </div>
@@ -327,8 +327,8 @@
       if (r.getAttribute("data-init")) return;
       r.setAttribute("data-init", "1");
       var head = el("div", "phase-head",
-        '<span class="phase p1">① Memorise</span>' +
-        '<span class="phase-hint">Say the answer out loud first — then tap to check.</span>');
+        '<span class="phase p1">Recall</span>' +
+        '<span class="phase-hint">Answer in your head, tap to check.</span>');
       r.insertBefore(head, r.firstChild);
       $all(".ritem", r).forEach(function (it) {
         if (!$(".ans", it)) return;
@@ -346,7 +346,7 @@
     });
   }
 
-  /* ---- "Make it yours" boxes (learn-cycle step ③ — generation) ---------- */
+  /* ---- Create boxes (learn cycle: Create — generation effect) ----------- */
   // Markup: <div class="your-turn" data-id="unique-id" data-ph="placeholder">
   //   <p class="prompt">instruction</p>
   //   <div class="sample">sample answer (optional)</div>
@@ -359,24 +359,23 @@
       if (!id) return;
       var saved = state.own[id] || "";
       var head = el("div", "phase-head",
-        '<span class="phase p3">③ Make it yours</span>' +
+        '<span class="phase p3">Create</span>' +
         (saved ? '<span class="pill green">✓ saved</span>' : ""));
       yt.insertBefore(head, yt.firstChild);
       var sample = $(".sample", yt);
       if (sample) {
         sample.style.display = "none";
-        sample.insertBefore(el("div", "sample-head",
-          "One possible version — yours doesn't need to match, it needs to be yours:"), sample.firstChild);
+        sample.insertBefore(el("div", "sample-head", "One version:"), sample.firstChild);
       }
       var ta = el("textarea", "own-input");
       ta.placeholder = yt.getAttribute("data-ph") || "Type your own example here…";
       ta.value = saved;
       var row = el("div", "btn-row");
-      var saveBtn = el("button", "btn primary", "Save my example");
+      var saveBtn = el("button", "btn primary", "Save");
       row.appendChild(saveBtn);
       var toggle = null;
       if (sample) {
-        toggle = el("button", "btn ghost", "Compare with a sample");
+        toggle = el("button", "btn ghost", "Sample");
         row.appendChild(toggle);
       }
       yt.appendChild(ta);
@@ -384,15 +383,15 @@
       if (sample) yt.appendChild(sample);
       saveBtn.addEventListener("click", function () {
         var v = ta.value.trim();
-        if (!v) { toast("Write something first — even one line counts."); ta.focus(); return; }
+        if (!v) { toast("One line is enough — write it first."); ta.focus(); return; }
         state.own[id] = v; save(); touchStreak();
         if (!$(".pill", head)) head.appendChild(el("span", "pill green", "✓ saved"));
-        toast("Saved — your own example sticks better than any template ✓");
+        toast("Saved ✓");
       });
       if (toggle) toggle.addEventListener("click", function () {
         var show = sample.style.display === "none";
         sample.style.display = show ? "" : "none";
-        toggle.textContent = show ? "Hide sample" : "Compare with a sample";
+        toggle.textContent = show ? "Hide" : "Sample";
       });
     });
   }

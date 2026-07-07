@@ -427,6 +427,55 @@ label.field { display: block; font-size: .82rem; font-weight: 650; color: var(--
 .set-card { cursor: pointer; }
 .set-card:hover { border-color: var(--blue); }
 
+/* ---------- Learn cycle: ① Memorise · ② Apply · ③ Make it yours ---------- */
+.phase-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .7rem; }
+.phase {
+  display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .02em;
+  padding: .22rem .65rem; border-radius: 999px; white-space: nowrap;
+}
+.phase.p1 { background: var(--purple-soft); color: var(--purple); }
+.phase.p2 { background: var(--blue-soft);   color: var(--blue-700); }
+.phase.p3 { background: var(--green-soft);  color: var(--green-dark); }
+.phase-hint { font-size: .78rem; color: var(--gray-500); }
+
+.recall {
+  background: var(--surface); border: 1px solid var(--gray-200);
+  border-left: 4px solid var(--purple); border-radius: 12px;
+  padding: .9rem 1rem; margin: 1rem 0;
+}
+.ritem {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  border: 1px solid var(--gray-200); border-radius: 10px; background: var(--gray-50);
+  padding: .6rem .8rem; margin: .45rem 0; min-height: var(--tap);
+}
+.ritem:hover, .ritem:focus-visible { border-color: var(--purple); outline: none; }
+.ritem .cue { display: block; font-weight: 600; font-size: .92rem; }
+.ritem .cue::after { content: "  ·  tap to check"; font-weight: 400; font-size: .74rem; color: var(--gray-400); }
+.ritem.open .cue::after { content: ""; }
+.ritem .ans { display: none; margin-top: .4rem; font-size: .9rem; color: var(--gray-600);
+  border-top: 1px dashed var(--gray-300); padding-top: .4rem; }
+.ritem.open { background: var(--purple-soft); border-color: var(--purple); }
+.ritem.open .ans { display: block; }
+
+.your-turn {
+  background: var(--surface); border: 1px dashed var(--green-dark);
+  border-radius: 12px; padding: .9rem 1rem; margin: 1rem 0;
+}
+.your-turn .prompt { margin: 0 0 .6rem; font-size: .95rem; }
+.own-input {
+  width: 100%; min-height: 88px; resize: vertical;
+  padding: .6rem .7rem; border: 1px solid var(--gray-300); border-radius: 10px;
+  font: inherit; font-size: .92rem; line-height: 1.55; background: #fff;
+}
+.own-input:focus { border-color: var(--green-dark); outline: none; }
+.your-turn .btn-row { margin-top: .6rem; }
+.your-turn .sample {
+  margin-top: .8rem; padding: .7rem .8rem; border-radius: 10px;
+  background: var(--gray-50); border: 1px solid var(--gray-200); font-size: .9rem;
+}
+.your-turn .sample-head { font-size: .76rem; font-weight: 700; color: var(--gray-500);
+  text-transform: uppercase; letter-spacing: .03em; margin-bottom: .4rem; }
+
 /* ---------- Trademark note ---------------------------------------------- */
 .tm-note {
   margin-top: 2.5rem; padding-top: 1rem; border-top: 1px solid var(--gray-200);
